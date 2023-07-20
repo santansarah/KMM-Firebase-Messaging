@@ -176,10 +176,12 @@ code_sign_if_enabled() {
 }
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${PODS_ROOT}/../../shared/build/cocoapods/framework/shared.framework"
+  install_framework "${PODS_ROOT}/../../shared/build/cocoapods/framework/MultiPlatformLibrary.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/mokoMvvmFlowSwiftUI/mokoMvvmFlowSwiftUI.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${PODS_ROOT}/../../shared/build/cocoapods/framework/shared.framework"
+  install_framework "${PODS_ROOT}/../../shared/build/cocoapods/framework/MultiPlatformLibrary.framework"
+  install_framework "${PODS_XCFRAMEWORKS_BUILD_DIR}/mokoMvvmFlowSwiftUI/mokoMvvmFlowSwiftUI.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

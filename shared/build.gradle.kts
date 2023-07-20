@@ -1,7 +1,9 @@
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
+    kotlin("plugin.serialization") version "1.8.0"
     id("com.android.library")
+    id("dev.icerock.mobile.multiplatform-resources")
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -26,19 +28,45 @@ kotlin {
         ios.deploymentTarget = "14.1"
         podfile = project.file("../iosApp/Podfile")
         framework {
-            baseName = "shared"
+            baseName = "MultiPlatformLibrary"
+            export("dev.icerock.moko:mvvm-core:0.16.1")
+            export("dev.icerock.moko:mvvm-flow:0.16.1")
         }
     }
-    
+
     sourceSets {
+
+        val androidMain by getting {
+            dependencies {
+                implementation(libs.ktor.client.android)
+                implementation(libs.koin.compose)
+            }
+        }
+
         val commonMain by getting {
             dependencies {
                 //put your multiplatform dependencies here
+
+                implementation(libs.kermit)
+                implementation(libs.bundles.ktor)
+                api(libs.shareResources)
+                implementation(libs.koin.core)
+
+                api("dev.icerock.moko:mvvm-core:0.16.1") // only ViewModel, EventsDispatcher, Dispatchers.UI
+                api("dev.icerock.moko:mvvm-flow:0.16.1") // api mvvm-core, CFlow for native and binding extensions
+                //api("dev.icerock.moko:mvvm-flow-resources:0.16.1") // api mvvm-core, moko-resources, extensions for Flow with moko-resources
+
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
+            }
+        }
+
+        val iosMain by getting {
+            dependencies {
+
             }
         }
     }
@@ -50,4 +78,9 @@ android {
     defaultConfig {
         minSdk = 29
     }
+}
+
+multiplatformResources {
+    multiplatformResourcesPackage = "com.santansarah.kmmfirebasemessaging"
+    multiplatformResourcesClassName = "SharedRes"
 }

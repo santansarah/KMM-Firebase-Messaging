@@ -1,12 +1,25 @@
 import SwiftUI
-import shared
+import MultiPlatformLibrary
 
 struct ContentView: View {
-	let greet = Greeting().greet()
+	
+    var body: some View {
+        VStack {
+            Image(resource: \.logo)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .padding(.all)
+            
+        
+            Text(resource: \.new_sign_in_heading)
+                .foregroundColor(Color.black)
 
-	var body: some View {
-		Text(greet)
-	}
+            Spacer()
+            
+        }
+    }
+    
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

@@ -10,6 +10,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        //jcenter()
+        //maven { url = uri("https://dl.bintray.com/aakira/maven") }
     }
 }
 

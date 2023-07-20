@@ -10,3 +10,7 @@ local.properties
 xcuserdata
 /androidApp/google-services.json
 /iosApp/iosApp/GoogleService-Info.plist
+/iosApp/Pods/
+/iosApp/Pods/Target Support Files/
+/iosApp/Pods/Target Support Files/Pods-iosApp/
+/iosApp/iosApp.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved

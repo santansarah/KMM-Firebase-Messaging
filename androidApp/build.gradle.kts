@@ -48,6 +48,10 @@ dependencies {
     implementation("androidx.compose.material:material:1.4.3")
     implementation("androidx.activity:activity-compose:1.7.1")
 
+    implementation(libs.navigationCompose)
+    implementation(libs.koin.compose)
+    implementation(libs.lifecycle.compose)
+
     implementation(platform("com.google.firebase:firebase-bom:32.2.0"))
     implementation("com.google.firebase:firebase-inappmessaging-display-ktx")
     implementation("com.google.firebase:firebase-analytics-ktx")
