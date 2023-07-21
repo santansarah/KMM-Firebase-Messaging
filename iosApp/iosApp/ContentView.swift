@@ -2,8 +2,9 @@ import SwiftUI
 import MultiPlatformLibrary
 
 struct ContentView: View {
-    @ObservedObject var homeViewModel = GetViewModels().getHomeViewModel().asObservableObject()
-	
+    @ObservedObject var homeViewModel = GetViewModels().getHomeViewModel()
+    @State var products: [Product] = homeViewModel.state(\.products)
+    
     var body: some View {
         VStack {
             Image(resource: \.logo)
@@ -18,18 +19,27 @@ struct ContentView: View {
             Spacer()
             
             List {
-                ForEach(homeViewModel.viewModel.products) { product in
+                ForEach(products, id: \.id) { product in
                     Text(product.title)
                 }
             }
         }
     }
     
+    func observeState() {
+    
+        homeViewModel.products.subscribe(onCollect: { list in
+            products = list as! [Product]
+        })
+        
+    }
     
 }
 
-struct ContentView_Previews: PreviewProvider {
-	static var previews: some View {
-		ContentView()
-	}
-}
+//struct ContentView_Previews: PreviewProvider {
+//	static var previews: some View {
+//		ContentView(
+//            products: [Product(id: 0, title: "Test", price: 0.00, category: "Test", description: "Test", image: "url")]
+//        )
+//	}
+//}

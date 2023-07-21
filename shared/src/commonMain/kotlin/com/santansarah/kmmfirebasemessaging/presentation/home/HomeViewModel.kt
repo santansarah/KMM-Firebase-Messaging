@@ -19,7 +19,7 @@ class HomeViewModel(
     private val dispatcher: Dispatcher
 ): ViewModel() {
 
-    private val _products = MutableStateFlow<List<Product>>(emptyList()).cMutableStateFlow()
+    private val _products = MutableStateFlow<List<Product>>(emptyList())
     val products = _products.asStateFlow().cStateFlow()
 
     init {

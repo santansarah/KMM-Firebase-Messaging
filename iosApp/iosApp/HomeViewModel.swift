@@ -9,18 +9,14 @@
 import Foundation
 import MultiPlatformLibrary
 
-public class SampleObservableObject: ObservableObject {
-    var viewModel: HomeViewModel
+class iOSHomeViewModel: ObservableObject {
+    let homeViewModel = GetViewModels().getHomeViewModel()
     
+    @Published var products = [Product]()
     
-    init(wrapper: HomeViewModel) {
-        viewModel = wrapper
-    }
-   
-}
-public extension  HomeViewModel {
-    func asObservableObject() -> SampleObservableObject {
-        return  SampleObservableObject(wrapper: self)
+    func observeState() {
+        homeViewModel.products.subscribe(onCollect: { list in
+                self.products = list as! [Product]
+        })
     }
 }
-

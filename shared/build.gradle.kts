@@ -40,6 +40,7 @@ kotlin {
             dependencies {
                 implementation(libs.ktor.client.android)
                 implementation(libs.koin.compose)
+                implementation(libs.koin.android)
             }
         }
 
@@ -51,6 +52,7 @@ kotlin {
                 implementation(libs.bundles.ktor)
                 api(libs.shareResources)
                 implementation(libs.koin.core)
+                implementation(libs.androidx.datastore.preferences.core)
 
                 api("dev.icerock.moko:mvvm-core:0.16.1") // only ViewModel, EventsDispatcher, Dispatchers.UI
                 api("dev.icerock.moko:mvvm-flow:0.16.1") // api mvvm-core, CFlow for native and binding extensions
@@ -66,7 +68,7 @@ kotlin {
 
         val iosMain by getting {
             dependencies {
-
+                implementation(libs.ktor.ios)
             }
         }
     }
