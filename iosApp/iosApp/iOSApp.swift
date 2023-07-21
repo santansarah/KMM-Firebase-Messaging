@@ -1,5 +1,6 @@
 import SwiftUI
 import FirebaseCore
+import MultiPlatformLibrary
 
 
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -15,9 +16,17 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct iOSApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
+    init() {
+        KoinKt.doInitKoin()
+    }
+   
+    
 	var body: some Scene {
 		WindowGroup {
 			ContentView()
 		}
 	}
 }
+
+
+

@@ -2,6 +2,7 @@ import SwiftUI
 import MultiPlatformLibrary
 
 struct ContentView: View {
+    @ObservedObject var homeViewModel = GetViewModels().getHomeViewModel().asObservableObject()
 	
     var body: some View {
         VStack {
@@ -16,6 +17,11 @@ struct ContentView: View {
 
             Spacer()
             
+            List {
+                ForEach(homeViewModel.viewModel.products) { product in
+                    Text(product.title)
+                }
+            }
         }
     }
     

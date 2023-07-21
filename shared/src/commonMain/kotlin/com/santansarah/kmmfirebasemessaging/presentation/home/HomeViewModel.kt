@@ -5,6 +5,9 @@ import com.santansarah.kmmfirebasemessaging.data.remote.StoreApiService
 import com.santansarah.kmmfirebasemessaging.data.remote.models.Product
 import com.santansarah.kmmfirebasemessaging.utils.Dispatcher
 import com.santansarah.kmmfirebasemessaging.utils.ServiceResult
+import dev.icerock.moko.mvvm.flow.CMutableStateFlow
+import dev.icerock.moko.mvvm.flow.cMutableStateFlow
+import dev.icerock.moko.mvvm.flow.cStateFlow
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,8 +19,8 @@ class HomeViewModel(
     private val dispatcher: Dispatcher
 ): ViewModel() {
 
-    private val _products: MutableStateFlow<List<Product>> = MutableStateFlow(emptyList())
-    val products = _products.asStateFlow()
+    private val _products = MutableStateFlow<List<Product>>(emptyList()).cMutableStateFlow()
+    val products = _products.asStateFlow().cStateFlow()
 
     init {
         getAllProducts()
