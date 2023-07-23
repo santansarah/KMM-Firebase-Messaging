@@ -3,9 +3,9 @@ import MultiPlatformLibrary
 
 struct ContentView: View {
     @ObservedObject var homeViewModel = GetViewModels().getHomeViewModel()
-    @State var products: [Product] = homeViewModel.state(\.products)
-    
+        
     var body: some View {
+    
         VStack {
             Image(resource: \.logo)
                 .resizable()
@@ -19,20 +19,14 @@ struct ContentView: View {
             Spacer()
             
             List {
-                ForEach(products, id: \.id) { product in
+                ForEach(homeViewModel.state(\.products, equals: { $0 === $1 },
+                                             mapper: { ($0 as! [Product]?)! }), id: \.id) { product in
                     Text(product.title)
                 }
             }
         }
     }
     
-    func observeState() {
-    
-        homeViewModel.products.subscribe(onCollect: { list in
-            products = list as! [Product]
-        })
-        
-    }
     
 }
 

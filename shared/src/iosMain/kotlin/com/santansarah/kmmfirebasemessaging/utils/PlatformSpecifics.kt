@@ -26,7 +26,7 @@ internal actual fun provideDispatcher(): Dispatcher = IosDispatcher()
 
 actual fun getViewModelByPlatform() = module {
     single {
-        HomeViewModel(get(), provideDispatcher())
+        HomeViewModel(get(), get(), provideDispatcher())
     }
     single {
         LoginViewModel()

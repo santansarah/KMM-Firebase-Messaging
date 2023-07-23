@@ -25,9 +25,10 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.santansarah.kmmfirebasemessaging.SharedRes
 import com.santansarah.kmmfirebasemessaging.android.MyApplicationTheme
-import com.santansarah.kmmfirebasemessaging.data.remote.models.Product
 import com.santansarah.kmmfirebasemessaging.data.remote.models.products
+import com.santansarah.kmmfirebasemessaging.presentation.home.HomeUIState
 import com.santansarah.kmmfirebasemessaging.presentation.home.HomeViewModel
+import com.santansarah.kmmfirebasemessaging.utils.ServiceResult
 import org.koin.androidx.compose.getViewModel
 
 @Composable
@@ -35,64 +36,78 @@ fun HomeScreen(
     viewModel: HomeViewModel = getViewModel()
 ) {
 
-    val products = viewModel.products.collectAsStateWithLifecycle()
-    HomeScreenContainer(products = products.value)
+    val homeState = viewModel.homeUIState.collectAsStateWithLifecycle()
+    HomeScreenLayout(
+        homeState.value,
+        viewModel::onOnboardingScreenUpdated
+    )
 
 }
 
 @Composable
-fun HomeScreenContainer(
-    products: List<Product>
+fun HomeScreenLayout(
+    homeUIState: HomeUIState,
+    onOnboardingScreenUpdated: (Int) -> Unit
 ) {
-    Column(
-        modifier = Modifier.fillMaxSize()
-    ) {
 
-        Image(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(6.dp),
-            painter =
-            painterResource(id = SharedRes.images.logo.drawableResId),
-            contentDescription = "Logo",
-            contentScale = ContentScale.FillWidth
-        )
+    if (homeUIState.currentOnboardingScreen > 0) {
+        if (!homeUIState.isOnboardingComplete)
+            OnboardingScreen(
+                homeUIState.currentOnboardingScreen,
+                onOnboardingScreenUpdated
+            )
+        else {
+            Column(
+                modifier = Modifier.fillMaxSize()
+            ) {
 
-        Spacer(modifier = Modifier.height(20.dp))
-
-        Text(
-            modifier = Modifier.padding(10.dp)
-                .fillMaxWidth(),
-            text = stringResource(
-                SharedRes.strings.new_sign_in_heading.resourceId
-            ),
-            textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.h5
-        )
-
-
-        Spacer(modifier = Modifier.height(20.dp))
-
-        LazyColumn(
-            modifier = Modifier.padding(16.dp)
-        ) {
-            items(products) {
-                Card(
+                Image(
                     modifier = Modifier
-                        .padding(6.dp)
                         .fillMaxWidth()
-                ) {
-                    Row(
-                        modifier = Modifier.padding(6.dp)
-                    ) {
-                        Text(text = it.title)
+                        .padding(6.dp),
+                    painter =
+                    painterResource(id = SharedRes.images.logo.drawableResId),
+                    contentDescription = "Logo",
+                    contentScale = ContentScale.FillWidth
+                )
 
+                Spacer(modifier = Modifier.height(20.dp))
+
+                Text(
+                    modifier = Modifier
+                        .padding(10.dp)
+                        .fillMaxWidth(),
+                    text = stringResource(
+                        SharedRes.strings.new_sign_in_heading.resourceId
+                    ),
+                    textAlign = TextAlign.Center,
+                    style = MaterialTheme.typography.h5
+                )
+
+
+                Spacer(modifier = Modifier.height(20.dp))
+
+                LazyColumn(
+                    modifier = Modifier.padding(16.dp)
+                ) {
+                    items(products) {
+                        Card(
+                            modifier = Modifier
+                                .padding(6.dp)
+                                .fillMaxWidth()
+                        ) {
+                            Row(
+                                modifier = Modifier.padding(6.dp)
+                            ) {
+                                Text(text = it.title)
+
+                            }
+                        }
                     }
+
                 }
             }
-
         }
-
     }
 }
 
@@ -103,9 +118,12 @@ fun HomeScreenContainer(
 @Composable
 fun HomeScreenPreview() {
 
+    val homeUIState = HomeUIState(
+        products = ServiceResult.Success(products)
+    )
 
     MyApplicationTheme {
-        HomeScreenContainer(products)
+        HomeScreenLayout(homeUIState, {})
     }
 
 }

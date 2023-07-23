@@ -25,7 +25,7 @@ internal actual fun provideDispatcher(): Dispatcher = AndroidDispatcher()
 
 actual fun getViewModelByPlatform() = module {
     viewModel {
-        HomeViewModel(get(), provideDispatcher())
+        HomeViewModel(get(), get(), provideDispatcher())
     }
 }
 

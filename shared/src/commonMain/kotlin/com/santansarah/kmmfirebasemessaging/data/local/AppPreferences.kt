@@ -94,7 +94,8 @@ class AppPreferencesRepository(
      */
     private fun mapAppPreferences(preferences: Preferences): AppPreferences {
         val lastScreen = preferences[PreferencesKeys.LAST_ONBOARDING_SCREEN] ?: 0
-        val isOnBoardingComplete: Boolean = (lastScreen >= 2)
+        Logger.d { "lastScreen: $lastScreen" }
+        val isOnBoardingComplete: Boolean = (lastScreen >= 1)
         val userId = preferences[PreferencesKeys.USER_ID] ?: 0
         val isSignedOut = preferences[PreferencesKeys.IS_SIGNED_OUT] ?: false
 

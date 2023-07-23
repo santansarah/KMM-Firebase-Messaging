@@ -13,6 +13,7 @@ import com.santansarah.kmmfirebasemessaging.Greeting
 import com.santansarah.kmmfirebasemessaging.android.presentation.AppNavGraph
 import com.santansarah.kmmfirebasemessaging.data.local.AppPreferences
 import com.santansarah.kmmfirebasemessaging.data.local.AppPreferencesRepository
+import kotlinx.coroutines.runBlocking
 import org.koin.android.ext.android.get
 import org.koin.core.context.GlobalContext.get
 
@@ -29,13 +30,10 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
 
-                    val appPrefs = appPreferencesRepository.userPreferencesFlow.collectAsStateWithLifecycle(
-                        initialValue = AppPreferences(isSignedOut = true)
-                    ).value
-
-                    println(appPrefs.toString())
-
-                    //AppNavGraph(startDestination = "home")
+runBlocking {
+    appPreferencesRepository.clear()
+}
+                    AppNavGraph(startDestination = "home")
 
                 }
             }

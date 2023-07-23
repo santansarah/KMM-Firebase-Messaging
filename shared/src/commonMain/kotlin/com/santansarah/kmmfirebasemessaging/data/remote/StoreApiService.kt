@@ -21,7 +21,7 @@ class StoreApiService : KtorApi() {
         const val PRODUCTS = "$BASE_URL/products"
     }
 
-    suspend fun getAllProducts(): ServiceResult<List<Product>> {
+    suspend fun getAllProducts(): ServiceResult {
 
         return try {
             val productResponse: List<Product> = client.get(PRODUCTS).body()

@@ -11,5 +11,4 @@ interface Dispatcher {
 
 internal expect fun provideDispatcher(): Dispatcher
 internal expect fun getViewModelByPlatform(): Module
-
 internal expect fun getDatastoreModuleByPlatform(): Module
