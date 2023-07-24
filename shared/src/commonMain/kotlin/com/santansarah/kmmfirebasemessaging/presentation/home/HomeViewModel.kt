@@ -3,7 +3,7 @@ package com.santansarah.kmmfirebasemessaging.presentation.home
 import co.touchlab.kermit.Logger
 import com.santansarah.kmmfirebasemessaging.data.local.AppPreferencesRepository
 import com.santansarah.kmmfirebasemessaging.data.remote.StoreApiService
-import com.santansarah.kmmfirebasemessaging.utils.Dispatcher
+import com.santansarah.kmmfirebasemessaging.di.Dispatcher
 import com.santansarah.kmmfirebasemessaging.utils.ServiceResult
 import dev.icerock.moko.mvvm.flow.cStateFlow
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import org.koin.core.component.KoinComponent
 
 data class HomeUIState(
     val isOnboardingComplete: Boolean = false,
@@ -22,7 +23,7 @@ class HomeViewModel(
     private val storeApiService: StoreApiService,
     private val appPreferencesRepository: AppPreferencesRepository,
     private val dispatcher: Dispatcher
-) : ViewModel() {
+) : ViewModel(), KoinComponent {
 
     private val _homeState = MutableStateFlow(HomeUIState())
     val homeUIState = _homeState.asStateFlow().cStateFlow()

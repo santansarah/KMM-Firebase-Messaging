@@ -10,6 +10,7 @@ plugins {
 buildscript {
     dependencies {
         classpath("dev.icerock.moko:resources-generator:0.22.3")
+        classpath("dev.icerock.moko:kswift-gradle-plugin:0.6.1")
         classpath("com.codingfeline.buildkonfig:buildkonfig-gradle-plugin:0.13.3")
     }
 }

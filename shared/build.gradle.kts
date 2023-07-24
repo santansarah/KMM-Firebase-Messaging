@@ -4,6 +4,7 @@ plugins {
     kotlin("plugin.serialization") version "1.8.0"
     id("com.android.library")
     id("dev.icerock.mobile.multiplatform-resources")
+    id("dev.icerock.moko.kswift")
 }
 
 @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
@@ -31,6 +32,7 @@ kotlin {
             baseName = "MultiPlatformLibrary"
             export("dev.icerock.moko:mvvm-core:0.16.1")
             export("dev.icerock.moko:mvvm-flow:0.16.1")
+            //export("dev.icerock.moko:resources:0.23.0")
         }
     }
 
@@ -56,7 +58,9 @@ kotlin {
 
                 api("dev.icerock.moko:mvvm-core:0.16.1") // only ViewModel, EventsDispatcher, Dispatchers.UI
                 api("dev.icerock.moko:mvvm-flow:0.16.1") // api mvvm-core, CFlow for native and binding extensions
-                //api("dev.icerock.moko:mvvm-flow-resources:0.16.1") // api mvvm-core, moko-resources, extensions for Flow with moko-resources
+                api("dev.icerock.moko:mvvm-flow-resources:0.16.1") // api mvvm-core, moko-resources, extensions for Flow with moko-resources
+                api("dev.icerock.moko:kswift-runtime:0.6.1") // if you want use annotations
+
 
             }
         }
@@ -85,4 +89,8 @@ android {
 multiplatformResources {
     multiplatformResourcesPackage = "com.santansarah.kmmfirebasemessaging"
     multiplatformResourcesClassName = "SharedRes"
+}
+
+kswift {
+    install(dev.icerock.moko.kswift.plugin.feature.SealedToSwiftEnumFeature)
 }

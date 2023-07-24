@@ -17,8 +17,9 @@ extension Image {
 }
 
 extension Text {
-    init(resource: KeyPath<SharedRes.strings, ResourcesStringResource>) {
-        self.init(StringsKt.mrString(resource: SharedRes.strings()[keyPath: resource]))
+    init(resource: ResourcesStringResource) {
+        //var test = ResourcesStringDesc(SharedRes.strings()[keyPath: resource])
+        self.init(StringsKt.mrString(resource: resource))
     }
     
 }
