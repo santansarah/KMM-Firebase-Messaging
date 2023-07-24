@@ -71,4 +71,10 @@ class HomeViewModel(
         }
     }
 
+    fun clearDatastore() {
+        viewModelScope.launch(dispatcher.io) {
+            appPreferencesRepository.clear()
+        }
+    }
+
 }

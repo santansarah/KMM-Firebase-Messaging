@@ -12,8 +12,8 @@
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		74894E9F2A6DB5720015D452 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74894E9E2A6DB5710015D452 /* OnboardingScreen.swift */; };
 		74894EA22A6DE4FD0015D452 /* shared in Resources */ = {isa = PBXBuildFile; fileRef = 74894EA12A6DE4FD0015D452 /* shared */; };
-		74894EAA2A6EF0C20015D452 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74894EA92A6EF0C20015D452 /* SwiftUIView.swift */; };
 		74B7EE242A6F044F00644CF6 /* KMM_Firebase_Messaging_shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7EE232A6F044F00644CF6 /* KMM_Firebase_Messaging_shared.swift */; };
+		74B7EE262A6F303400644CF6 /* ProductList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7EE252A6F303400644CF6 /* ProductList.swift */; };
 		74BA0B632A64AF9100E9E334 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74BA0B622A64AF9100E9E334 /* GoogleService-Info.plist */; };
 		74BA0B732A672C1600E9E334 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 74BA0B722A672C1600E9E334 /* FirebaseAnalyticsSwift */; };
 		74BA0B752A672C1600E9E334 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 74BA0B742A672C1600E9E334 /* FirebaseAuth */; };
@@ -46,8 +46,8 @@
 		3F61F61EE3ACF3F6EADDFA8C /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74894E9E2A6DB5710015D452 /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
 		74894EA12A6DE4FD0015D452 /* shared */ = {isa = PBXFileReference; lastKnownFileType = folder; name = shared; path = ../shared; sourceTree = "<group>"; };
-		74894EA92A6EF0C20015D452 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		74B7EE232A6F044F00644CF6 /* KMM_Firebase_Messaging_shared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KMM_Firebase_Messaging_shared.swift; path = ../../../shared/build/bin/iosX64/podDebugFramework/MultiPlatformLibrarySwift/KMM_Firebase_Messaging_shared.swift; sourceTree = "<group>"; };
+		74B7EE252A6F303400644CF6 /* ProductList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductList.swift; sourceTree = "<group>"; };
 		74BA0B622A64AF9100E9E334 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		74BA0B7E2A675C7500E9E334 /* ResourceUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceUtils.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,7 +97,7 @@
 			children = (
 				7555FF82242A565900829871 /* HomeView.swift */,
 				74894E9E2A6DB5710015D452 /* OnboardingScreen.swift */,
-				74894EA92A6EF0C20015D452 /* SwiftUIView.swift */,
+				74B7EE252A6F303400644CF6 /* ProductList.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -283,9 +283,9 @@
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				74894E9F2A6DB5720015D452 /* OnboardingScreen.swift in Sources */,
 				74B7EE242A6F044F00644CF6 /* KMM_Firebase_Messaging_shared.swift in Sources */,
+				74B7EE262A6F303400644CF6 /* ProductList.swift in Sources */,
 				74BA0B7F2A675C7500E9E334 /* ResourceUtils.swift in Sources */,
 				7555FF83242A565900829871 /* HomeView.swift in Sources */,
-				74894EAA2A6EF0C20015D452 /* SwiftUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +327,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -389,6 +390,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_PREVIEWS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
