@@ -7,8 +7,8 @@ struct HomeView: View {
     @StateObject var homeViewModel: HomeViewModel = GetViewModels().getHomeViewModel()
     
     init() {
+        // temp, just to reset it each time
         homeViewModel.clearDatastore()
-        
     }
     
     var body: some View {
@@ -25,6 +25,7 @@ struct HomeView: View {
         }
         
     }
+
 }
 
 extension HomeViewModel {

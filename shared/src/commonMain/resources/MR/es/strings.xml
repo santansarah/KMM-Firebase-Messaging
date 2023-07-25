@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">KMM Messaging</string>
     <string name="new_sign_in_heading">Regístrese para comenzar a comprar</string>
+    <string name="onboarding_one_text">Bienvenido. Aquí puede comprar productos electrónicos, ropa y más.</string>
 </resources>

@@ -5,14 +5,3 @@ target 'iosApp' do
   pod 'mokoMvvmFlowSwiftUI', :podspec => 'https://raw.githubusercontent.com/icerockdev/moko-mvvm/release/0.16.1/mokoMvvmFlowSwiftUI.podspec'
 end
 
-post_install do |installer|
-    installer.pods_project.targets.each do |target|
-        if target.name == "MultiPlatformLibrary"
-            puts "Updating #{target.name} COCOAPODS_SKIP_KOTLIN_BUILD"
-            target.build_configurations.each do |config|
-                config.build_settings['COCOAPODS_SKIP_KOTLIN_BUILD'] = '$ENABLE_PREVIEWS'
-            end
-        end
-    end
-end
-

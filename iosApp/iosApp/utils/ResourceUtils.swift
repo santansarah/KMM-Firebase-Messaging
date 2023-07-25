@@ -21,5 +21,4 @@ extension Text {
         //var test = ResourcesStringDesc(SharedRes.strings()[keyPath: resource])
         self.init(StringsKt.mrString(resource: resource))
     }
-    
 }
