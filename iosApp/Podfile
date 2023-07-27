@@ -3,5 +3,8 @@ target 'iosApp' do
   platform :ios, '14.1'
   pod 'shared', :path => '../shared'
   pod 'mokoMvvmFlowSwiftUI', :podspec => 'https://raw.githubusercontent.com/icerockdev/moko-mvvm/release/0.16.1/mokoMvvmFlowSwiftUI.podspec'
+  pod 'FirebaseAnalyticsSwift'
+  pod 'FirebaseInAppMessagingSwift', '> 10.12-beta'
 end
+
 

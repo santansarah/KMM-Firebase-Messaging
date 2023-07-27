@@ -1,3 +1,12 @@
 ${PODS_ROOT}/Target Support Files/Pods-iosApp/Pods-iosApp-frameworks.sh
+${BUILT_PRODUCTS_DIR}/FirebaseABTesting/FirebaseABTesting.framework
+${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework
+${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework
+${BUILT_PRODUCTS_DIR}/FirebaseInAppMessaging/FirebaseInAppMessaging.framework
+${BUILT_PRODUCTS_DIR}/FirebaseInAppMessagingSwift/FirebaseInAppMessagingSwift.framework
+${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework
+${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework
+${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework
+${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework
 ${PODS_ROOT}/../../shared/build/cocoapods/framework/MultiPlatformLibrary.framework
 ${PODS_XCFRAMEWORKS_BUILD_DIR}/mokoMvvmFlowSwiftUI/mokoMvvmFlowSwiftUI.framework/mokoMvvmFlowSwiftUI

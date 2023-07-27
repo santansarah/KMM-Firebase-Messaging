@@ -8,14 +8,9 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.santansarah.kmmfirebasemessaging.Greeting
-import com.santansarah.kmmfirebasemessaging.android.presentation.AppNavGraph
-import com.santansarah.kmmfirebasemessaging.data.local.AppPreferences
 import com.santansarah.kmmfirebasemessaging.data.local.AppPreferencesRepository
 import kotlinx.coroutines.runBlocking
 import org.koin.android.ext.android.get
-import org.koin.core.context.GlobalContext.get
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
