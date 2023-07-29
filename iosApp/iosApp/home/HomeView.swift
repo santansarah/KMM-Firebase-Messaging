@@ -20,6 +20,7 @@ struct HomeView: View {
             VStack {
                 if !homeUiState.isOnboardingComplete {
                     OnboardingScreenView(
+                        analytics: AppAnalyticsService(),
                         currentScreen: homeUiState.currentOnboardingScreen,
                         onScreenChanged: homeViewModel.onOnboardingScreenUpdated
                     )}

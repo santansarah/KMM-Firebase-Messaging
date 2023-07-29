@@ -26,14 +26,10 @@ struct iOSApp: App {
                     
                     print("got here...")
                     
-                    let testEnum = EnumWithValue.valueone
-                    //let realEnum = LinkScreen.signin
-                    
                     let linkScreen = AppDeepLinks().getByLink(fullDeepLink: url.absoluteString)
                     print("screen: " + linkScreen.name)
                     router.path.append(linkScreen)
                     
-                
                 }
         }
 	}

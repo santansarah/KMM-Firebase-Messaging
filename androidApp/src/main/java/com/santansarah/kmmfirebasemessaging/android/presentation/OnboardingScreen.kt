@@ -18,8 +18,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.santansarah.kmmfirebasemessaging.android.services.AppAnalyticsService
 import com.santansarah.kmmfirebasemessaging.data.local.OnboardingScreenRepo
 import com.santansarah.kmmfirebasemessaging.domain.models.OnboardingScreen
+import org.koin.androidx.compose.get
 
 @Composable
 fun OnboardingScreen(
@@ -27,6 +29,7 @@ fun OnboardingScreen(
     onScreenChanged: (Int) -> Unit
 ) {
 
+    var analyticsService = get<AppAnalyticsService>()
     val thisScreen = OnboardingScreenRepo.screens[currentScreen-1]
 
     Column(
@@ -44,7 +47,10 @@ fun OnboardingScreen(
             style = MaterialTheme.typography.h4,
             textAlign = TextAlign.Center)
         Spacer(modifier = Modifier.height(30.dp))
-        Button(onClick = { onScreenChanged(thisScreen.currentScreen) }) {
+        Button(onClick = {
+            analyticsService.completeTutorial()
+            onScreenChanged(thisScreen.currentScreen)
+        }) {
             Text(text = "Next")
         }
     }

@@ -8,8 +8,10 @@
 
 import SwiftUI
 import MultiPlatformLibrary
+import FirebaseAnalytics
 
 struct OnboardingScreenView: View {
+    let analytics: IAnalyticsService
     let currentScreen: Int32
     var onScreenChanged: (Int32) -> Void
     
@@ -33,6 +35,7 @@ struct OnboardingScreenView: View {
                 
             
                 Button("Next") {
+                    analytics.completeTutorial()
                     onScreenChanged(currentScreen)
                 }
                 .padding()
@@ -49,6 +52,7 @@ struct OnboardingScreenView: View {
 struct OnboardingScreen_Previews: PreviewProvider {
     static var previews: some View {
         OnboardingScreenView(
+            analytics: AppAnalyticsService(),
             currentScreen: 1,
                          onScreenChanged: {_ in }
         )
