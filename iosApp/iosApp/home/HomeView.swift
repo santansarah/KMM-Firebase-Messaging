@@ -3,8 +3,10 @@ import MultiPlatformLibrary
 import mokoMvvmFlowSwiftUI
 
 
+@available(iOS 16.0, *)
 struct HomeView: View {
     @StateObject var homeViewModel: HomeViewModel = GetViewModels().getHomeViewModel()
+    @EnvironmentObject var router: Router
     
     init() {
         // temp, just to reset it each time
@@ -12,20 +14,34 @@ struct HomeView: View {
     }
     
     var body: some View {
-        
-        let homeUiState = homeViewModel.stateKs
-        
-        if !homeUiState.isOnboardingComplete {
-                OnboardingScreenView(
-                    currentScreen: homeUiState.currentOnboardingScreen,
-                    onScreenChanged: homeViewModel.onOnboardingScreenUpdated
-                )}
-        else{
-            ProductList(productStateK: homeUiState.products.resultKs)
+        NavigationStack(path: $router.path) {
+            let homeUiState = homeViewModel.stateKs
+            
+            VStack {
+                if !homeUiState.isOnboardingComplete {
+                    OnboardingScreenView(
+                        currentScreen: homeUiState.currentOnboardingScreen,
+                        onScreenChanged: homeViewModel.onOnboardingScreenUpdated
+                    )}
+                else{
+                    ProductList(productStateK: homeUiState.products.resultKs)
+                }
+            }
+            .navigationDestination(for: LinkScreen.self) { deepLink in
+                chooseDestination(for: deepLink)
+            }
+            .navigationTitle("Welcome")
         }
-        
     }
+}
 
+@ViewBuilder
+func chooseDestination(for goToPath: LinkScreen) -> some View {
+    
+        switch goToPath {
+        case .signin: SignInScreen()
+        default: EmptyView()
+        }
 }
 
 extension HomeViewModel {

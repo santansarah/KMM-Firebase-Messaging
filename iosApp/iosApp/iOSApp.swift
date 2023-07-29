@@ -3,28 +3,39 @@ import FirebaseCore
 import MultiPlatformLibrary
 
 
-class AppDelegate: NSObject, UIApplicationDelegate {
-  func application(_ application: UIApplication,
-                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-    FirebaseApp.configure()
-
-    return true
-  }
-}
-
+@available(iOS 16.0, *)
 @main
 struct iOSApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
+    @StateObject var router = Router()
     
     init() {
         KoinKt.doInitKoin()
+        FirebaseApp.configure()
     }
    
     
 	var body: some Scene {
 		WindowGroup {
 			HomeView()
-		}
+                .environmentObject(router)
+                .onOpenURL { url in
+                    
+                    guard let scheme = url.scheme, scheme == "kmm" else { return }
+                    guard url.host != nil else { return }
+                    
+                    print("got here...")
+                    
+                    let testEnum = EnumWithValue.valueone
+                    //let realEnum = LinkScreen.signin
+                    
+                    let linkScreen = AppDeepLinks().getByLink(fullDeepLink: url.absoluteString)
+                    print("screen: " + linkScreen.name)
+                    router.path.append(linkScreen)
+                    
+                
+                }
+        }
 	}
 }
 

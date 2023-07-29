@@ -61,7 +61,6 @@ kotlin {
                 api("dev.icerock.moko:mvvm-flow-resources:0.16.1") // api mvvm-core, moko-resources, extensions for Flow with moko-resources
                 api("dev.icerock.moko:kswift-runtime:0.6.1") // if you want use annotations
 
-
             }
         }
         val commonTest by getting {

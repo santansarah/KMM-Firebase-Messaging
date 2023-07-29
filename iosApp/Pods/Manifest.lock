@@ -87,12 +87,15 @@ PODS:
   - nanopb/encode (2.30909.0)
   - PromisesObjC (2.3.1)
   - shared (1.0)
+  - sharedSwift (1.0):
+    - shared
 
 DEPENDENCIES:
   - FirebaseAnalyticsSwift
   - FirebaseInAppMessagingSwift (> 10.12-beta)
   - mokoMvvmFlowSwiftUI (from `https://raw.githubusercontent.com/icerockdev/moko-mvvm/release/0.16.1/mokoMvvmFlowSwiftUI.podspec`)
   - shared (from `../shared`)
+  - sharedSwift (from `../shared`)
 
 SPEC REPOS:
   trunk:
@@ -114,6 +117,8 @@ EXTERNAL SOURCES:
     :podspec: https://raw.githubusercontent.com/icerockdev/moko-mvvm/release/0.16.1/mokoMvvmFlowSwiftUI.podspec
   shared:
     :path: "../shared"
+  sharedSwift:
+    :path: "../shared"
 
 SPEC CHECKSUMS:
   FirebaseABTesting: 09c328e6a86d562b4e1146c8a9073deadc566b77
@@ -130,7 +135,8 @@ SPEC CHECKSUMS:
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
   shared: d22e29033a2b5a0efa52d701bcf02fc8d9e96808
+  sharedSwift: 0ae7cb36e20289846c00bb7343d1f9915b0882ab
 
-PODFILE CHECKSUM: d7bb6f53ba69f239a876d15d79147ebadd6209b2
+PODFILE CHECKSUM: d91518579b37cfd423c160cfae45b1925da0a798
 
 COCOAPODS: 1.12.1

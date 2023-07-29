@@ -12,8 +12,10 @@
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		74894E9F2A6DB5720015D452 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74894E9E2A6DB5710015D452 /* OnboardingScreen.swift */; };
 		74894EA22A6DE4FD0015D452 /* shared in Resources */ = {isa = PBXBuildFile; fileRef = 74894EA12A6DE4FD0015D452 /* shared */; };
-		74B7EE242A6F044F00644CF6 /* KMM_Firebase_Messaging_shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7EE232A6F044F00644CF6 /* KMM_Firebase_Messaging_shared.swift */; };
 		74B7EE262A6F303400644CF6 /* ProductList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7EE252A6F303400644CF6 /* ProductList.swift */; };
+		74B7EE312A72F2E600644CF6 /* SignInScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7EE302A72F2E600644CF6 /* SignInScreen.swift */; };
+		74B7EE332A7428D800644CF6 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7EE322A7428D800644CF6 /* Router.swift */; };
+		74B7EE352A745E4F00644CF6 /* SwiftKs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7EE342A745E4F00644CF6 /* SwiftKs.swift */; };
 		74BA0B632A64AF9100E9E334 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74BA0B622A64AF9100E9E334 /* GoogleService-Info.plist */; };
 		74BA0B7F2A675C7500E9E334 /* ResourceUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BA0B7E2A675C7500E9E334 /* ResourceUtils.swift */; };
 		7555FF83242A565900829871 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* HomeView.swift */; };
@@ -40,8 +42,10 @@
 		3F61F61EE3ACF3F6EADDFA8C /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74894E9E2A6DB5710015D452 /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
 		74894EA12A6DE4FD0015D452 /* shared */ = {isa = PBXFileReference; lastKnownFileType = folder; name = shared; path = ../shared; sourceTree = "<group>"; };
-		74B7EE232A6F044F00644CF6 /* KMM_Firebase_Messaging_shared.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KMM_Firebase_Messaging_shared.swift; path = ../../../shared/build/bin/iosX64/podDebugFramework/MultiPlatformLibrarySwift/KMM_Firebase_Messaging_shared.swift; sourceTree = "<group>"; };
 		74B7EE252A6F303400644CF6 /* ProductList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductList.swift; sourceTree = "<group>"; };
+		74B7EE302A72F2E600644CF6 /* SignInScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInScreen.swift; sourceTree = "<group>"; };
+		74B7EE322A7428D800644CF6 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		74B7EE342A745E4F00644CF6 /* SwiftKs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftKs.swift; sourceTree = "<group>"; };
 		74BA0B622A64AF9100E9E334 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		74BA0B7E2A675C7500E9E334 /* ResourceUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceUtils.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,10 +97,18 @@
 		74894EA02A6DCCAB0015D452 /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				74B7EE232A6F044F00644CF6 /* KMM_Firebase_Messaging_shared.swift */,
 				74BA0B7E2A675C7500E9E334 /* ResourceUtils.swift */,
+				74B7EE342A745E4F00644CF6 /* SwiftKs.swift */,
 			);
 			path = utils;
+			sourceTree = "<group>";
+		};
+		74B7EE2F2A72F2BD00644CF6 /* signin */ = {
+			isa = PBXGroup;
+			children = (
+				74B7EE302A72F2E600644CF6 /* SignInScreen.swift */,
+			);
+			path = signin;
 			sourceTree = "<group>";
 		};
 		7555FF72242A565900829871 = {
@@ -121,6 +133,7 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				74B7EE2F2A72F2BD00644CF6 /* signin */,
 				74894EA02A6DCCAB0015D452 /* utils */,
 				74894E9D2A6DB5380015D452 /* home */,
 				74BA0B622A64AF9100E9E334 /* GoogleService-Info.plist */,
@@ -128,6 +141,7 @@
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
+				74B7EE322A7428D800644CF6 /* Router.swift */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -261,9 +275,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74B7EE332A7428D800644CF6 /* Router.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				74B7EE352A745E4F00644CF6 /* SwiftKs.swift in Sources */,
 				74894E9F2A6DB5720015D452 /* OnboardingScreen.swift in Sources */,
-				74B7EE242A6F044F00644CF6 /* KMM_Firebase_Messaging_shared.swift in Sources */,
+				74B7EE312A72F2E600644CF6 /* SignInScreen.swift in Sources */,
 				74B7EE262A6F303400644CF6 /* ProductList.swift in Sources */,
 				74BA0B7F2A675C7500E9E334 /* ResourceUtils.swift in Sources */,
 				7555FF83242A565900829871 /* HomeView.swift in Sources */,
