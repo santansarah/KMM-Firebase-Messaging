@@ -25,10 +25,12 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.santansarah.kmmfirebasemessaging.SharedRes
 import com.santansarah.kmmfirebasemessaging.android.MyApplicationTheme
+import com.santansarah.kmmfirebasemessaging.android.services.AppAnalyticsService
 import com.santansarah.kmmfirebasemessaging.data.remote.models.products
 import com.santansarah.kmmfirebasemessaging.presentation.home.HomeUIState
 import com.santansarah.kmmfirebasemessaging.presentation.home.HomeViewModel
 import com.santansarah.kmmfirebasemessaging.utils.ServiceResult
+import org.koin.androidx.compose.get
 import org.koin.androidx.compose.getViewModel
 
 @Composable
@@ -36,9 +38,12 @@ fun HomeScreen(
     viewModel: HomeViewModel = getViewModel()
 ) {
 
+    val analyticsService = get<AppAnalyticsService>()
     val homeState = viewModel.homeUIState.collectAsStateWithLifecycle()
+
     HomeScreenLayout(
         homeState.value,
+        analyticsService::completeTutorial,
         viewModel::onOnboardingScreenUpdated
     )
 
@@ -47,6 +52,7 @@ fun HomeScreen(
 @Composable
 fun HomeScreenLayout(
     homeUIState: HomeUIState,
+    onAnalyticsEvent: () -> Unit,
     onOnboardingScreenUpdated: (Int) -> Unit
 ) {
 
@@ -54,6 +60,7 @@ fun HomeScreenLayout(
         if (!homeUIState.isOnboardingComplete)
             OnboardingScreen(
                 homeUIState.currentOnboardingScreen,
+                onAnalyticsEvent,
                 onOnboardingScreenUpdated
             )
         else {
@@ -123,7 +130,7 @@ fun HomeScreenPreview() {
     )
 
     MyApplicationTheme {
-        HomeScreenLayout(homeUIState, {})
+        HomeScreenLayout(homeUIState, {}, {})
     }
 
 }

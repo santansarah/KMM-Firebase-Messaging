@@ -11,14 +11,22 @@ import MultiPlatformLibrary
 import SwiftUI
 
 extension Image {
-    init(resource: KeyPath<SharedRes.images, ResourcesImageResource>) {
+    init(resource: KeyPath<SharedRes.images, ImageResource>) {
         self.init(uiImage: SharedRes.images()[keyPath: resource].toUIImage()!)
     }
 }
 
 extension Text {
-    init(resource: ResourcesStringResource) {
+    init(resource: StringResource) {
         //var test = ResourcesStringDesc(SharedRes.strings()[keyPath: resource])
-        self.init(StringsKt.mrString(resource: resource))
+        self.init(resource.desc().localized())
     }
 }
+
+extension SwiftUI.Color {
+    
+    init(resource: KeyPath<SharedRes.colors, ColorResource>) {
+        self.init(SharedRes.colors()[keyPath: resource].getUIColor())
+    }
+}
+

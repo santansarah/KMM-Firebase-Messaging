@@ -6,6 +6,7 @@ import com.santansarah.kmmfirebasemessaging.di.initKoin
 import org.koin.android.ext.koin.androidContext
 
 class SanTanShop: Application() {
+
     override fun onCreate() {
         super.onCreate()
         initKoin {

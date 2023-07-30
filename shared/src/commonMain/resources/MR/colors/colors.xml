@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">
+        <light>#ff5223ff</light>
+        <dark>#ff5223ff</dark>
+    </color>
+    <color name="lightText">
+        <light>#e7e5e4ff</light>
+        <dark>#181818ff</dark>
+    </color>
+    <color name="darkText">
+        <light>#181818ff</light>
+        <dark>#e7e5e4ff</dark>
+    </color>
+    <color name="background">
+        <light>#f3f3f3ff</light>
+        <dark>#181818ff</dark>
+    </color>
+    <color name="cardSurface">
+        <light>#e7e5e4ff</light>
+        <dark>#363534ff</dark>
+    </color>
+</resources>

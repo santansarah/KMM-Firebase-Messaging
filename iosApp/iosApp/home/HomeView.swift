@@ -3,7 +3,6 @@ import MultiPlatformLibrary
 import mokoMvvmFlowSwiftUI
 
 
-@available(iOS 16.0, *)
 struct HomeView: View {
     @StateObject var homeViewModel: HomeViewModel = GetViewModels().getHomeViewModel()
     @EnvironmentObject var router: Router

@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
+
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
@@ -30,9 +32,10 @@ kotlin {
         podfile = project.file("../iosApp/Podfile")
         framework {
             baseName = "MultiPlatformLibrary"
+            export("dev.icerock.moko:resources:0.23.0")
             export("dev.icerock.moko:mvvm-core:0.16.1")
             export("dev.icerock.moko:mvvm-flow:0.16.1")
-            //export("dev.icerock.moko:resources:0.23.0")
+            export("dev.icerock.moko:graphics:0.9.0") // toUIColor here
         }
     }
 

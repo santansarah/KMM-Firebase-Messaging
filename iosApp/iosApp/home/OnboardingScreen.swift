@@ -8,7 +8,6 @@
 
 import SwiftUI
 import MultiPlatformLibrary
-import FirebaseAnalytics
 
 struct OnboardingScreenView: View {
     let analytics: IAnalyticsService
@@ -31,18 +30,25 @@ struct OnboardingScreenView: View {
                     .padding([.bottom], 40)
                 
                 Text(resource: thisOnboardingScreen.headingText)
+                    .padding([.leading, .trailing])
                     .padding([.bottom], 40)
                 
-            
-                Button("Next") {
+                
+                Button {
                     analytics.completeTutorial()
                     onScreenChanged(currentScreen)
-                }
-                .padding()
-                .background(Color.purple)
-                .foregroundColor(Color.white)
-                .cornerRadius(16)
-                
+
+                    } label: {
+                        Text("Next")
+                            .multilineTextAlignment(.center)
+                            .lineLimit(0)
+                            .controlSize(.large)
+                            .padding(.horizontal, 32)
+                            .padding(.vertical, 18)
+                            .background(Color(resource: \.primary))
+                            .foregroundColor(Color(resource: \.lightText))
+                            .cornerRadius(16)
+                    }
                 
             }
         }
