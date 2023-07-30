@@ -24,7 +24,6 @@ import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -33,9 +32,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.santansarah.kmmfirebasemessaging.SharedRes
-import com.santansarah.kmmfirebasemessaging.android.MyApplicationTheme
 import com.santansarah.kmmfirebasemessaging.android.services.AppAnalyticsService
-import com.santansarah.kmmfirebasemessaging.android.utils.APP_COLORS
+import com.santansarah.kmmfirebasemessaging.android.utils.ThemeColors
 import com.santansarah.kmmfirebasemessaging.android.utils.toColor
 import com.santansarah.kmmfirebasemessaging.data.remote.models.products
 import com.santansarah.kmmfirebasemessaging.presentation.home.HomeUIState
@@ -78,7 +76,7 @@ fun HomeScreenLayout(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(APP_COLORS.background.toColor())
+                    .background(ThemeColors.background.toColor())
             ) {
 
                 Image(
@@ -102,7 +100,7 @@ fun HomeScreenLayout(
                     ),
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.h5,
-                    color = APP_COLORS.darkText.toColor()
+                    color = ThemeColors.darkText.toColor()
                 )
 
 
@@ -116,7 +114,7 @@ fun HomeScreenLayout(
                             modifier = Modifier
                                 .padding(6.dp)
                                 .fillMaxWidth()
-                                .background(APP_COLORS.cardSurface.toColor(),
+                                .background(ThemeColors.cardSurface.toColor(),
                                     RoundedCornerShape(6.dp)
                                 )
                         ) {
@@ -130,7 +128,7 @@ fun HomeScreenLayout(
                                 Text(
                                     modifier = Modifier.fillMaxWidth(.8f),
                                     text = it.title,
-                                    color = APP_COLORS.darkText.toColor()
+                                    color = ThemeColors.darkText.toColor()
                                 )
                                 Column(
                                     modifier = Modifier.padding(end=4.dp)
@@ -138,7 +136,7 @@ fun HomeScreenLayout(
                                     Icon(
                                         imageVector = Icons.Default.PlayArrow,
                                         contentDescription = "Select Item",
-                                        tint = APP_COLORS.darkText.toColor()
+                                        tint = ThemeColors.darkText.toColor()
                                     )
                                 }
                             }

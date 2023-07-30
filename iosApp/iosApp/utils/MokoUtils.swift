@@ -18,7 +18,6 @@ extension Image {
 
 extension Text {
     init(resource: StringResource) {
-        //var test = ResourcesStringDesc(SharedRes.strings()[keyPath: resource])
         self.init(resource.desc().localized())
     }
 }

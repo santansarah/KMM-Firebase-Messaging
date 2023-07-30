@@ -16,15 +16,13 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.santansarah.kmmfirebasemessaging.data.local.OnboardingScreenRepo
-import com.santansarah.kmmfirebasemessaging.android.utils.APP_COLORS
-import com.santansarah.kmmfirebasemessaging.android.utils.colorResourceFromId
+import com.santansarah.kmmfirebasemessaging.android.utils.ThemeColors
 import com.santansarah.kmmfirebasemessaging.android.utils.toColor
 
 @Composable
@@ -39,7 +37,7 @@ fun OnboardingScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(APP_COLORS.background.toColor()),
+            .background(ThemeColors.background.toColor()),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -53,13 +51,13 @@ fun OnboardingScreen(
             text = stringResource(id = thisScreen.headingText.resourceId),
             style = MaterialTheme.typography.h5,
             textAlign = TextAlign.Center,
-            color = APP_COLORS.darkText.toColor()
+            color = ThemeColors.darkText.toColor()
         )
         Spacer(modifier = Modifier.height(30.dp))
         Button(
             colors = ButtonDefaults.buttonColors(
-                backgroundColor = APP_COLORS.primary.toColor(),
-                contentColor = APP_COLORS.lightText.toColor()
+                backgroundColor = ThemeColors.primary.toColor(),
+                contentColor = ThemeColors.lightText.toColor()
             ),
             onClick = {
                 onAnalyticsEvent()

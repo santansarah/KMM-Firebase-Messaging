@@ -18,7 +18,7 @@
 		74B7EE352A745E4F00644CF6 /* SwiftKs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7EE342A745E4F00644CF6 /* SwiftKs.swift */; };
 		74B7EE372A75A7CC00644CF6 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7EE362A75A7CC00644CF6 /* Analytics.swift */; };
 		74BA0B632A64AF9100E9E334 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74BA0B622A64AF9100E9E334 /* GoogleService-Info.plist */; };
-		74BA0B7F2A675C7500E9E334 /* ResourceUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BA0B7E2A675C7500E9E334 /* ResourceUtils.swift */; };
+		74BA0B7F2A675C7500E9E334 /* MokoUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BA0B7E2A675C7500E9E334 /* MokoUtils.swift */; };
 		7555FF83242A565900829871 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* HomeView.swift */; };
 		8A77ADA9D1053F52EBE666C4 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F61F61EE3ACF3F6EADDFA8C /* Pods_iosApp.framework */; };
 /* End PBXBuildFile section */
@@ -49,7 +49,7 @@
 		74B7EE342A745E4F00644CF6 /* SwiftKs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftKs.swift; sourceTree = "<group>"; };
 		74B7EE362A75A7CC00644CF6 /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		74BA0B622A64AF9100E9E334 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		74BA0B7E2A675C7500E9E334 /* ResourceUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceUtils.swift; sourceTree = "<group>"; };
+		74BA0B7E2A675C7500E9E334 /* MokoUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MokoUtils.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -99,7 +99,7 @@
 		74894EA02A6DCCAB0015D452 /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				74BA0B7E2A675C7500E9E334 /* ResourceUtils.swift */,
+				74BA0B7E2A675C7500E9E334 /* MokoUtils.swift */,
 				74B7EE342A745E4F00644CF6 /* SwiftKs.swift */,
 			);
 			path = utils;
@@ -284,7 +284,7 @@
 				74894E9F2A6DB5720015D452 /* OnboardingScreen.swift in Sources */,
 				74B7EE312A72F2E600644CF6 /* SignInScreen.swift in Sources */,
 				74B7EE262A6F303400644CF6 /* ProductList.swift in Sources */,
-				74BA0B7F2A675C7500E9E334 /* ResourceUtils.swift in Sources */,
+				74BA0B7F2A675C7500E9E334 /* MokoUtils.swift in Sources */,
 				7555FF83242A565900829871 /* HomeView.swift in Sources */,
 				74B7EE372A75A7CC00644CF6 /* Analytics.swift in Sources */,
 			);
