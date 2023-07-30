@@ -30,7 +30,6 @@ struct HomeView: View {
             .navigationDestination(for: LinkScreen.self) { deepLink in
                 chooseDestination(for: deepLink)
             }
-            .navigationTitle("Welcome")
         }
     }
 }

@@ -9,7 +9,6 @@
 import SwiftUI
 import MultiPlatformLibrary
 
-
 struct ProductList: View {
     var productStateK: ServiceResultKs<AnyObject>
     
@@ -23,7 +22,7 @@ struct ProductList: View {
             
         
             Text(resource: SharedRes.strings().new_sign_in_heading)
-                .foregroundColor(Color.black)
+                .foregroundColor(Color(resource: \.darkText))
 
             Spacer()
                         
@@ -42,11 +41,14 @@ struct ProductList: View {
                     id: \.self.id
                 ) { product in
                     Text(product.title)
+                        .listRowBackground(Color(resource: \.cardSurface))
                         .padding()
+                        .foregroundColor(Color(resource: \.darkText))
                 }
             }
             
         }
+        .background(Color(resource: \.background))
     }
 }
 

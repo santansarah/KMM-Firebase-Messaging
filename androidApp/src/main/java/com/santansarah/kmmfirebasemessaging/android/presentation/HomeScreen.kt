@@ -1,7 +1,10 @@
 package com.santansarah.kmmfirebasemessaging.android.presentation
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -11,11 +14,17 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -26,6 +35,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.santansarah.kmmfirebasemessaging.SharedRes
 import com.santansarah.kmmfirebasemessaging.android.MyApplicationTheme
 import com.santansarah.kmmfirebasemessaging.android.services.AppAnalyticsService
+import com.santansarah.kmmfirebasemessaging.android.utils.APP_COLORS
+import com.santansarah.kmmfirebasemessaging.android.utils.toColor
 import com.santansarah.kmmfirebasemessaging.data.remote.models.products
 import com.santansarah.kmmfirebasemessaging.presentation.home.HomeUIState
 import com.santansarah.kmmfirebasemessaging.presentation.home.HomeViewModel
@@ -65,7 +76,9 @@ fun HomeScreenLayout(
             )
         else {
             Column(
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(APP_COLORS.background.toColor())
             ) {
 
                 Image(
@@ -88,7 +101,8 @@ fun HomeScreenLayout(
                         SharedRes.strings.new_sign_in_heading.resourceId
                     ),
                     textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.h5
+                    style = MaterialTheme.typography.h5,
+                    color = APP_COLORS.darkText.toColor()
                 )
 
 
@@ -102,12 +116,31 @@ fun HomeScreenLayout(
                             modifier = Modifier
                                 .padding(6.dp)
                                 .fillMaxWidth()
+                                .background(APP_COLORS.cardSurface.toColor(),
+                                    RoundedCornerShape(6.dp)
+                                )
                         ) {
                             Row(
-                                modifier = Modifier.padding(6.dp)
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 6.dp, vertical = 10.dp)
                             ) {
-                                Text(text = it.title)
-
+                                Text(
+                                    modifier = Modifier.fillMaxWidth(.8f),
+                                    text = it.title,
+                                    color = APP_COLORS.darkText.toColor()
+                                )
+                                Column(
+                                    modifier = Modifier.padding(end=4.dp)
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Default.PlayArrow,
+                                        contentDescription = "Select Item",
+                                        tint = APP_COLORS.darkText.toColor()
+                                    )
+                                }
                             }
                         }
                     }
@@ -122,15 +155,19 @@ fun HomeScreenLayout(
     showSystemUi = true, showBackground = true,
     uiMode = UI_MODE_NIGHT_NO
 )
+@Preview(
+    showSystemUi = true, showBackground = true,
+    uiMode = UI_MODE_NIGHT_YES
+)
 @Composable
 fun HomeScreenPreview() {
 
     val homeUIState = HomeUIState(
+        currentOnboardingScreen = 1,
+        isOnboardingComplete = true,
         products = ServiceResult.Success(products)
     )
 
-    MyApplicationTheme {
-        HomeScreenLayout(homeUIState, {}, {})
-    }
+    HomeScreenLayout(homeUIState, {}, {})
 
 }
