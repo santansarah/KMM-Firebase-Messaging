@@ -13,11 +13,11 @@
         <dark>#e7e5e4ff</dark>
     </color>
     <color name="background">
-        <light>#f3f3f3ff</light>
+        <light>#ffeae5ff</light>
         <dark>#181818ff</dark>
     </color>
     <color name="cardSurface">
-        <light>#e7e5e4ff</light>
+        <light>#fcf5ffff</light>
         <dark>#363534ff</dark>
     </color>
 </resources>

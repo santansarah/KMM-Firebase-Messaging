@@ -41,10 +41,11 @@ struct ProductList: View {
                     id: \.self.id
                 ) { product in
                     Text(product.title)
-                        .listRowBackground(Color(resource: \.cardSurface))
-                        .padding()
+                        .listRowBackground(Color(resource: \.cardSurface))      .padding()
                         .foregroundColor(Color(resource: \.darkText))
                 }
+                .background(Color(resource: \.background))
+                .scrollContentBackground(.hidden)
             }
             
         }

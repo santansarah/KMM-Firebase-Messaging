@@ -26,7 +26,7 @@ struct iOSApp: App {
                     
                     print("got here...")
                     
-                    let linkScreen = AppDeepLinks().getByLink(fullDeepLink: url.absoluteString)
+                    let linkScreen = AppDeepLink.utils().typeFromPath(fullDeepLink: url.absoluteString)
                     print("screen: " + linkScreen.name)
                     router.path.append(linkScreen)
                     

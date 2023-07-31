@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navDeepLink
 import com.santansarah.kmmfirebasemessaging.android.presentation.HomeScreen
 import com.santansarah.kmmfirebasemessaging.android.presentation.SignInScreen
+import com.santansarah.kmmfirebasemessaging.domain.AppDeepLink
 
 @Composable
 fun AppNavGraph(
@@ -25,7 +26,7 @@ fun AppNavGraph(
         composable(
             "signin",
             deepLinks = listOf(navDeepLink {
-                uriPattern = "kmm://signin"
+                uriPattern = AppDeepLink.pathFromType(AppDeepLink.SIGNIN)
             }),
         ) {
             SignInScreen()

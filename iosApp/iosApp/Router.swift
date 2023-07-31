@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-@available(iOS 16.0, *)
 class Router: ObservableObject {
     @Published var path = NavigationPath()
     

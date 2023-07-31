@@ -27,7 +27,7 @@ struct HomeView: View {
                     ProductList(productStateK: homeUiState.products.resultKs)
                 }
             }
-            .navigationDestination(for: LinkScreen.self) { deepLink in
+            .navigationDestination(for: AppDeepLink.self) { deepLink in
                 chooseDestination(for: deepLink)
             }
         }
@@ -35,7 +35,7 @@ struct HomeView: View {
 }
 
 @ViewBuilder
-func chooseDestination(for goToPath: LinkScreen) -> some View {
+func chooseDestination(for goToPath: AppDeepLink) -> some View {
     
         switch goToPath {
         case .signin: SignInScreen()

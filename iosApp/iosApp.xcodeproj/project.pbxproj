@@ -113,6 +113,14 @@
 			path = signin;
 			sourceTree = "<group>";
 		};
+		74C84BC62A77656400F8E137 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				74B7EE362A75A7CC00644CF6 /* Analytics.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
 		7555FF72242A565900829871 = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +143,7 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				74C84BC62A77656400F8E137 /* services */,
 				74B7EE2F2A72F2BD00644CF6 /* signin */,
 				74894EA02A6DCCAB0015D452 /* utils */,
 				74894E9D2A6DB5380015D452 /* home */,
@@ -144,7 +153,6 @@
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
 				74B7EE322A7428D800644CF6 /* Router.swift */,
-				74B7EE362A75A7CC00644CF6 /* Analytics.swift */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
