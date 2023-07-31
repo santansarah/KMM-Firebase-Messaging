@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Divider
@@ -116,18 +117,20 @@ fun HomeScreenLayout(
                             RoundedCornerShape(12.dp)
                         )
                 ) {
-                    items(products) {
+                    itemsIndexed(products) { idx, product ->
                         Row(
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically,
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(start = 10.dp, end = 6.dp,
-                                    top = 14.dp, bottom = 14.dp)
+                                .padding(
+                                    start = 10.dp, end = 6.dp,
+                                    top = 14.dp, bottom = 14.dp
+                                )
                         ) {
                             Text(
                                 modifier = Modifier.fillMaxWidth(.8f),
-                                text = it.title,
+                                text = product.title,
                                 color = ThemeColors.darkText.toColor()
                             )
                             Column(
@@ -140,7 +143,8 @@ fun HomeScreenLayout(
                                 )
                             }
                         }
-                        Divider(thickness = 2.dp, color = Color.LightGray)
+                        if (idx < products.count() - 1)
+                            Divider(thickness = 2.dp, color = Color.LightGray)
                     }
 
                 }
