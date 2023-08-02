@@ -53,6 +53,8 @@ kotlin {
             dependencies {
                 //put your multiplatform dependencies here
 
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
+
                 implementation(libs.kermit)
                 implementation(libs.bundles.ktor)
                 api(libs.shareResources)
@@ -63,6 +65,8 @@ kotlin {
                 api("dev.icerock.moko:mvvm-flow:0.16.1") // api mvvm-core, CFlow for native and binding extensions
                 api("dev.icerock.moko:mvvm-flow-resources:0.16.1") // api mvvm-core, moko-resources, extensions for Flow with moko-resources
                 api("dev.icerock.moko:kswift-runtime:0.6.1") // if you want use annotations
+
+                implementation("dev.gitlive:firebase-firestore:1.8.0")
 
             }
         }

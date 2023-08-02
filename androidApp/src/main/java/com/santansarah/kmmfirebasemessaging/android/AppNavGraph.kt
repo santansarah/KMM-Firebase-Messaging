@@ -9,11 +9,15 @@ import androidx.navigation.navDeepLink
 import com.santansarah.kmmfirebasemessaging.android.presentation.HomeScreen
 import com.santansarah.kmmfirebasemessaging.android.presentation.SignInScreen
 import com.santansarah.kmmfirebasemessaging.domain.AppDeepLink
+import kotlinx.coroutines.CoroutineScope
+import kotlin.reflect.KSuspendFunction0
 
 @Composable
 fun AppNavGraph(
     navController: NavHostController = rememberNavController(),
-    startDestination: String
+    startDestination: String,
+    onSignIn: () -> Unit,
+    onSignOut: () -> Unit,
 ) {
 
     NavHost(
@@ -21,7 +25,7 @@ fun AppNavGraph(
         startDestination = startDestination,
     ) {
         composable("home") {
-            HomeScreen()
+            HomeScreen(onSignIn = onSignIn, onSignOut = onSignOut)
         }
         composable(
             "signin",

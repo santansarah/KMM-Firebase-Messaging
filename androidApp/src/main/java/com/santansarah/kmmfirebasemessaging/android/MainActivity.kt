@@ -6,17 +6,24 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.santansarah.kmmfirebasemessaging.android.presentation.account.SignInObserver
 import com.santansarah.kmmfirebasemessaging.data.local.AppPreferencesRepository
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
+import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        var appPreferencesRepository = get<AppPreferencesRepository>()
+        val appPreferencesRepository = get<AppPreferencesRepository>()
+        val signInObserver: SignInObserver by inject {parametersOf(this@MainActivity)}
+        this.lifecycle.addObserver(signInObserver)
 
         setContent {
             MyApplicationTheme {
@@ -25,11 +32,12 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
 
-runBlocking {
-    appPreferencesRepository.clear()
-}
-                    AppNavGraph(startDestination = "home")
+                    val scope = rememberCoroutineScope()
 
+                    AppNavGraph(
+                        startDestination = "home",
+                        onSignIn = signInObserver::signUpUser,
+                        onSignOut = {scope.launch { signInObserver.signOut()}})
                 }
             }
         }

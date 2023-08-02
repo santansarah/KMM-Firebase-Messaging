@@ -1,5 +1,6 @@
 package com.santansarah.kmmfirebasemessaging.android.presentation
 
+import android.content.res.Configuration
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
@@ -16,11 +17,14 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Card
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
+import androidx.compose.material.TextButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.Composable
@@ -42,12 +46,15 @@ import com.santansarah.kmmfirebasemessaging.data.remote.models.products
 import com.santansarah.kmmfirebasemessaging.presentation.home.HomeUIState
 import com.santansarah.kmmfirebasemessaging.presentation.home.HomeViewModel
 import com.santansarah.kmmfirebasemessaging.utils.ServiceResult
+import kotlinx.coroutines.CoroutineScope
 import org.koin.androidx.compose.get
 import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun HomeScreen(
-    viewModel: HomeViewModel = getViewModel()
+    viewModel: HomeViewModel = getViewModel(),
+    onSignIn: () -> Unit,
+    onSignOut: () -> Unit
 ) {
 
     val analyticsService = get<AppAnalyticsService>()
@@ -56,7 +63,8 @@ fun HomeScreen(
     HomeScreenLayout(
         homeState.value,
         analyticsService::completeTutorial,
-        viewModel::onOnboardingScreenUpdated
+        viewModel::onOnboardingScreenUpdated,
+        onSignIn, onSignOut
     )
 
 }
@@ -65,7 +73,9 @@ fun HomeScreen(
 fun HomeScreenLayout(
     homeUIState: HomeUIState,
     onAnalyticsEvent: () -> Unit,
-    onOnboardingScreenUpdated: (Int) -> Unit
+    onOnboardingScreenUpdated: (Int) -> Unit,
+    onSignIn: () -> Unit,
+    onSignOut: () -> Unit
 ) {
 
     if (homeUIState.currentOnboardingScreen > 0) {
@@ -94,18 +104,30 @@ fun HomeScreenLayout(
 
                 Spacer(modifier = Modifier.height(20.dp))
 
-                Text(
-                    modifier = Modifier
-                        .padding(10.dp)
-                        .fillMaxWidth(),
-                    text = stringResource(
-                        SharedRes.strings.new_sign_in_heading.resourceId
-                    ),
-                    textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.h5,
-                    color = ThemeColors.darkText.toColor()
-                )
+                OutlinedButton(
+                    onClick = { onSignIn() },
+                    colors = ButtonDefaults.buttonColors(
+                        contentColor = ThemeColors.lightText.toColor(),
+                        backgroundColor = ThemeColors.primary.toColor().copy(.8f)
+                    )
+                ) {
+                    Text(
+                        modifier = Modifier
+                            .padding(10.dp)
+                            .fillMaxWidth(),
+                        text = stringResource(
+                            SharedRes.strings.new_sign_in_heading.resourceId
+                        ),
+                        textAlign = TextAlign.Center,
+                        style = MaterialTheme.typography.h5
+                    )
+                }
 
+                TextButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    onClick = { onSignOut() }) {
+                    Text(text = "Sign Out", textAlign = TextAlign.Center)
+                }
 
                 Spacer(modifier = Modifier.height(20.dp))
 
@@ -170,6 +192,6 @@ fun HomeScreenPreview() {
         products = ServiceResult.Success(products)
     )
 
-    HomeScreenLayout(homeUIState, {}, {})
+    HomeScreenLayout(homeUIState, {}, {}, {}, {})
 
 }

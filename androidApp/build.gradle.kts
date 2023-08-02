@@ -55,6 +55,11 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.2.0"))
     implementation("com.google.firebase:firebase-inappmessaging-display-ktx")
     implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-messaging-ktx")
+
+    // authentication
+    implementation("com.firebaseui:firebase-ui-auth:7.2.0")
+
 }
 
 
