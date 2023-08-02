@@ -108,12 +108,12 @@ fun HomeScreenLayout(
                     onClick = { onSignIn() },
                     colors = ButtonDefaults.buttonColors(
                         contentColor = ThemeColors.lightText.toColor(),
-                        backgroundColor = ThemeColors.primary.toColor().copy(.8f)
+                        backgroundColor = ThemeColors.primary.toColor()
                     )
                 ) {
                     Text(
                         modifier = Modifier
-                            .padding(10.dp)
+                            .padding(4.dp)
                             .fillMaxWidth(),
                         text = stringResource(
                             SharedRes.strings.new_sign_in_heading.resourceId

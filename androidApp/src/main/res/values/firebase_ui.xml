@@ -1,0 +1,29 @@
+<resources>
+    <style name="SignInTheme" parent="FirebaseUI">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary</item>
+        <item name="colorAccent">@color/primary</item>
+        <item name="colorButtonNormal">@color/primary</item>
+        <item name="colorControlNormal">@color/lightText</item>
+        <item name="colorControlActivated">@color/primary</item>
+        <item name="colorControlHighlight">@android:color/white</item>
+        <item name="android:textColor">@color/darkText</item>
+        <item name="android:textColorPrimary">@color/darkText</item>
+        <item name="android:textColorSecondary">@color/darkText</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:textColorHint">@color/darkText</item>
+    </style>
+
+    <style name="FirebaseUI.Text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="FirebaseUI.Text.Link">
+        <item name="android:textColor">@color/primary</item>
+    </style>
+
+</resources>
