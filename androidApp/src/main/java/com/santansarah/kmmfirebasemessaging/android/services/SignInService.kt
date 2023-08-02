@@ -19,6 +19,11 @@ import com.santansarah.kmmfirebasemessaging.SharedRes
 import com.santansarah.kmmfirebasemessaging.android.R
 import com.santansarah.kmmfirebasemessaging.data.local.UserRepository
 import com.santansarah.kmmfirebasemessaging.utils.SignUpHelper
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import org.koin.core.component.KoinComponent
@@ -27,11 +32,10 @@ import kotlin.math.sign
 
 class SignInService @Inject constructor(
     private val userRepository: UserRepository,
-    private val firebaseMessaging: FirebaseMessaging
+    private val firebaseMessaging: FirebaseMessaging,
+    private val firebaseAuth: FirebaseAuth,
+    private val authUi: AuthUI
 ): KoinComponent {
-
-    private val firebaseAuth = FirebaseAuth.getInstance()
-    private val authUi = AuthUI.getInstance()
 
     private val providers = arrayListOf(
         AuthUI.IdpConfig.GoogleBuilder().build(),
@@ -46,6 +50,16 @@ class SignInService @Inject constructor(
         .build()
 
     private val SERVER_NONCE: String = SignUpHelper.getNonce()
+
+    fun isUserSignedIn(scope: CoroutineScope) = callbackFlow {
+        val authStateListener = FirebaseAuth.AuthStateListener {
+            trySend(firebaseAuth.currentUser != null)
+        }
+        firebaseAuth.addAuthStateListener(authStateListener)
+        awaitClose {
+            firebaseAuth.removeAuthStateListener(authStateListener)
+        }
+    }.stateIn(scope, SharingStarted.WhileSubscribed(), firebaseAuth.currentUser == null)
 
     suspend fun onSignInResult(result: FirebaseAuthUIAuthenticationResult) {
         val response = result.idpResponse
@@ -72,7 +86,11 @@ class SignInService @Inject constructor(
     }
 
     suspend fun signOut(activity: Context) {
-        val success = authUi.signOut(activity).await()
+        try {
+            val success = authUi.signOut(activity).await()
+        } catch (e: Exception) {
+            Log.d("signin", "sign out error: ${e.message.toString()}")
+        }
     }
 
 }

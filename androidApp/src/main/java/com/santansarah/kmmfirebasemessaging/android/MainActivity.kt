@@ -9,9 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.santansarah.kmmfirebasemessaging.android.presentation.account.SignInObserver
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.santansarah.kmmfirebasemessaging.data.local.AppPreferencesRepository
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
@@ -33,11 +32,14 @@ class MainActivity : ComponentActivity() {
                 ) {
 
                     val scope = rememberCoroutineScope()
+                    val isUserSignedIn = signInObserver.isUserSignedIn
+                        .collectAsStateWithLifecycle().value
 
                     AppNavGraph(
                         startDestination = "home",
                         onSignIn = signInObserver::signUpUser,
-                        onSignOut = {scope.launch { signInObserver.signOut()}})
+                        onSignOut = {scope.launch { signInObserver.signOut()}},
+                        isUserSignedIn = isUserSignedIn)
                 }
             }
         }

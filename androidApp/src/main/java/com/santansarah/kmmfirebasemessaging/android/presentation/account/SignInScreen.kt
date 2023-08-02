@@ -1,4 +1,4 @@
-package com.santansarah.kmmfirebasemessaging.android.presentation
+package com.santansarah.kmmfirebasemessaging.android.presentation.account
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

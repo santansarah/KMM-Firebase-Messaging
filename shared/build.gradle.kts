@@ -66,6 +66,7 @@ kotlin {
                 api("dev.icerock.moko:mvvm-flow-resources:0.16.1") // api mvvm-core, moko-resources, extensions for Flow with moko-resources
                 api("dev.icerock.moko:kswift-runtime:0.6.1") // if you want use annotations
 
+                //implementation("dev.gitlive:firebase-auth:1.8.0")
                 implementation("dev.gitlive:firebase-firestore:1.8.0")
 
             }

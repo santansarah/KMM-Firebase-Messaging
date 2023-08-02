@@ -1,26 +1,22 @@
-package com.santansarah.kmmfirebasemessaging.android.presentation.account
+package com.santansarah.kmmfirebasemessaging.android
 
-import android.app.Activity.RESULT_OK
-import android.bluetooth.BluetoothAdapter
 import android.content.Context
 import android.content.Intent
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.result.ActivityResultLauncher
+import androidx.compose.runtime.MutableState
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.coroutineScope
-import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
-import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
-import com.google.firebase.auth.FirebaseAuth
 import com.santansarah.kmmfirebasemessaging.android.services.SignInService
-import com.santansarah.kmmfirebasemessaging.data.local.UserRepository
 import com.santansarah.kmmfirebasemessaging.utils.SignUpHelper
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
-import kotlin.math.sign
 
 class SignInObserver @Inject constructor(
     private val activity: Context,
@@ -29,8 +25,18 @@ class SignInObserver @Inject constructor(
 
     private lateinit var getAuthResults: ActivityResultLauncher<Intent>
 
+    private var _isUserSignedIn = MutableStateFlow(false)
+    val isUserSignedIn = _isUserSignedIn.asStateFlow()
+
     override fun onCreate(owner: LifecycleOwner) {
         val registry = (activity as ComponentActivity).activityResultRegistry
+
+        owner.lifecycle.coroutineScope.launch {
+            signInService
+                .isUserSignedIn(this).collect {
+                    _isUserSignedIn.value = it
+                }
+        }
 
         getAuthResults = registry.register(
             SignUpHelper.SIGN_UP_REQUEST_CODE, owner,
@@ -52,7 +58,7 @@ class SignInObserver @Inject constructor(
     }
 
     suspend fun signOut() {
-        val success = signInService.signOut(activity)
+        signInService.signOut(activity as ComponentActivity)
     }
 
 }

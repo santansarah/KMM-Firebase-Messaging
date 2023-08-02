@@ -54,7 +54,8 @@ import org.koin.androidx.compose.getViewModel
 fun HomeScreen(
     viewModel: HomeViewModel = getViewModel(),
     onSignIn: () -> Unit,
-    onSignOut: () -> Unit
+    onSignOut: () -> Unit,
+    isUserSignedIn: Boolean
 ) {
 
     val analyticsService = get<AppAnalyticsService>()
@@ -64,7 +65,7 @@ fun HomeScreen(
         homeState.value,
         analyticsService::completeTutorial,
         viewModel::onOnboardingScreenUpdated,
-        onSignIn, onSignOut
+        onSignIn, onSignOut, isUserSignedIn
     )
 
 }
@@ -75,7 +76,8 @@ fun HomeScreenLayout(
     onAnalyticsEvent: () -> Unit,
     onOnboardingScreenUpdated: (Int) -> Unit,
     onSignIn: () -> Unit,
-    onSignOut: () -> Unit
+    onSignOut: () -> Unit,
+    isUserSignedIn: Boolean
 ) {
 
     if (homeUIState.currentOnboardingScreen > 0) {
@@ -104,23 +106,25 @@ fun HomeScreenLayout(
 
                 Spacer(modifier = Modifier.height(20.dp))
 
-                OutlinedButton(
-                    onClick = { onSignIn() },
-                    colors = ButtonDefaults.buttonColors(
-                        contentColor = ThemeColors.lightText.toColor(),
-                        backgroundColor = ThemeColors.primary.toColor()
-                    )
-                ) {
-                    Text(
-                        modifier = Modifier
-                            .padding(4.dp)
-                            .fillMaxWidth(),
-                        text = stringResource(
-                            SharedRes.strings.new_sign_in_heading.resourceId
-                        ),
-                        textAlign = TextAlign.Center,
-                        style = MaterialTheme.typography.h5
-                    )
+                if (!isUserSignedIn) {
+                    OutlinedButton(
+                        onClick = { onSignIn() },
+                        colors = ButtonDefaults.buttonColors(
+                            contentColor = ThemeColors.lightText.toColor(),
+                            backgroundColor = ThemeColors.primary.toColor()
+                        )
+                    ) {
+                        Text(
+                            modifier = Modifier
+                                .padding(4.dp)
+                                .fillMaxWidth(),
+                            text = stringResource(
+                                SharedRes.strings.new_sign_in_heading.resourceId
+                            ),
+                            textAlign = TextAlign.Center,
+                            style = MaterialTheme.typography.h5
+                        )
+                    }
                 }
 
                 TextButton(
@@ -192,6 +196,6 @@ fun HomeScreenPreview() {
         products = ServiceResult.Success(products)
     )
 
-    HomeScreenLayout(homeUIState, {}, {}, {}, {})
+    HomeScreenLayout(homeUIState, {}, {}, {}, {}, false)
 
 }
