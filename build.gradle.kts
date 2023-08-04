@@ -5,14 +5,8 @@ plugins {
     kotlin("android").version("1.8.21").apply(false)
     kotlin("multiplatform").version("1.8.21").apply(false)
     id("com.google.gms.google-services").version("4.3.15").apply(false)
-}
-
-buildscript {
-    dependencies {
-        classpath("dev.icerock.moko:resources-generator:0.22.3")
-        classpath("dev.icerock.moko:kswift-gradle-plugin:0.6.1")
-        classpath("com.codingfeline.buildkonfig:buildkonfig-gradle-plugin:0.13.3")
-    }
+    id("dev.icerock.mobile.multiplatform-resources").version("0.23.0").apply(false)
+    id("dev.icerock.moko.kswift").version("0.6.1").apply(false)
 }
 
 tasks.register("clean", Delete::class) {

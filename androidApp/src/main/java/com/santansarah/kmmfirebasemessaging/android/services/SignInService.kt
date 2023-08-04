@@ -59,7 +59,7 @@ class SignInService @Inject constructor(
         awaitClose {
             firebaseAuth.removeAuthStateListener(authStateListener)
         }
-    }.stateIn(scope, SharingStarted.WhileSubscribed(), firebaseAuth.currentUser == null)
+    }.stateIn(scope, SharingStarted.WhileSubscribed(), firebaseAuth.currentUser != null)
 
     suspend fun onSignInResult(result: FirebaseAuthUIAuthenticationResult) {
         val response = result.idpResponse
