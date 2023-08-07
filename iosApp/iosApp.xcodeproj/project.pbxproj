@@ -10,45 +10,39 @@
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
+		746A740D2A80425300985007 /* SignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746A740C2A80425300985007 /* SignInService.swift */; };
+		746A740F2A80587600985007 /* FirebaseListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746A740E2A80587600985007 /* FirebaseListener.swift */; };
 		74894E9F2A6DB5720015D452 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74894E9E2A6DB5710015D452 /* OnboardingScreen.swift */; };
-		74894EA22A6DE4FD0015D452 /* shared in Resources */ = {isa = PBXBuildFile; fileRef = 74894EA12A6DE4FD0015D452 /* shared */; };
+		749FEC122A7DB063006B6578 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 749FEC112A7DB062006B6578 /* GoogleService-Info.plist */; };
 		74B7EE262A6F303400644CF6 /* ProductList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7EE252A6F303400644CF6 /* ProductList.swift */; };
 		74B7EE312A72F2E600644CF6 /* SignInScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7EE302A72F2E600644CF6 /* SignInScreen.swift */; };
 		74B7EE332A7428D800644CF6 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7EE322A7428D800644CF6 /* Router.swift */; };
 		74B7EE352A745E4F00644CF6 /* SwiftKs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7EE342A745E4F00644CF6 /* SwiftKs.swift */; };
 		74B7EE372A75A7CC00644CF6 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7EE362A75A7CC00644CF6 /* Analytics.swift */; };
-		74BA0B632A64AF9100E9E334 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74BA0B622A64AF9100E9E334 /* GoogleService-Info.plist */; };
 		74BA0B7F2A675C7500E9E334 /* MokoUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74BA0B7E2A675C7500E9E334 /* MokoUtils.swift */; };
 		7555FF83242A565900829871 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* HomeView.swift */; };
 		8A77ADA9D1053F52EBE666C4 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F61F61EE3ACF3F6EADDFA8C /* Pods_iosApp.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		74894EA62A6EDC580015D452 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		3F61F61EE3ACF3F6EADDFA8C /* Pods_iosApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iosApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		746A73E32A7EC98F00985007 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		746A73E62A7ECBBB00985007 /* mokoMvvmFlowSwiftUI.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = mokoMvvmFlowSwiftUI.xcframework; path = Pods/mokoMvvmFlowSwiftUI/mokoMvvmFlowSwiftUI.xcframework; sourceTree = "<group>"; };
+		746A73EA2A7ECC2D00985007 /* FirebaseAuthUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuthUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		746A73FA2A7F101800985007 /* gRPCCertificates-Cpp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "gRPCCertificates-Cpp.bundle"; sourceTree = "<group>"; };
+		746A74022A7F121F00985007 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		746A740C2A80425300985007 /* SignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInService.swift; sourceTree = "<group>"; };
+		746A740E2A80587600985007 /* FirebaseListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseListener.swift; sourceTree = "<group>"; };
 		74894E9E2A6DB5710015D452 /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
-		74894EA12A6DE4FD0015D452 /* shared */ = {isa = PBXFileReference; lastKnownFileType = folder; name = shared; path = ../shared; sourceTree = "<group>"; };
+		749FEC112A7DB062006B6578 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		74B7EE252A6F303400644CF6 /* ProductList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductList.swift; sourceTree = "<group>"; };
 		74B7EE302A72F2E600644CF6 /* SignInScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInScreen.swift; sourceTree = "<group>"; };
 		74B7EE322A7428D800644CF6 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		74B7EE342A745E4F00644CF6 /* SwiftKs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftKs.swift; sourceTree = "<group>"; };
 		74B7EE362A75A7CC00644CF6 /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
-		74BA0B622A64AF9100E9E334 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		74BA0B7E2A675C7500E9E334 /* MokoUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MokoUtils.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -117,6 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				74B7EE362A75A7CC00644CF6 /* Analytics.swift */,
+				746A740C2A80425300985007 /* SignInService.swift */,
+				746A740E2A80587600985007 /* FirebaseListener.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -124,7 +120,7 @@
 		7555FF72242A565900829871 = {
 			isa = PBXGroup;
 			children = (
-				74894EA12A6DE4FD0015D452 /* shared */,
+				746A73FA2A7F101800985007 /* gRPCCertificates-Cpp.bundle */,
 				7555FF7D242A565900829871 /* iosApp */,
 				7555FF7C242A565900829871 /* Products */,
 				1FB5719C59D8CD4BA1395A9D /* Pods */,
@@ -143,11 +139,11 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				749FEC112A7DB062006B6578 /* GoogleService-Info.plist */,
 				74C84BC62A77656400F8E137 /* services */,
 				74B7EE2F2A72F2BD00644CF6 /* signin */,
 				74894EA02A6DCCAB0015D452 /* utils */,
 				74894E9D2A6DB5380015D452 /* home */,
-				74BA0B622A64AF9100E9E334 /* GoogleService-Info.plist */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
@@ -160,6 +156,10 @@
 		78E21585DC6D3108D4919C23 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				746A74022A7F121F00985007 /* FirebaseFirestore.framework */,
+				746A73EA2A7ECC2D00985007 /* FirebaseAuthUI.framework */,
+				746A73E62A7ECBBB00985007 /* mokoMvvmFlowSwiftUI.xcframework */,
+				746A73E32A7EC98F00985007 /* FirebaseFirestore.framework */,
 				3F61F61EE3ACF3F6EADDFA8C /* Pods_iosApp.framework */,
 			);
 			name = Frameworks;
@@ -177,7 +177,6 @@
 				7555FF79242A565900829871 /* Resources */,
 				7D4DF418F265280654319186 /* Frameworks */,
 				B8BBD6D3FDD5076C06828959 /* [CP] Embed Pods Frameworks */,
-				74894EA62A6EDC580015D452 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -231,9 +230,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */,
-				74894EA22A6DE4FD0015D452 /* shared in Resources */,
+				749FEC122A7DB063006B6578 /* GoogleService-Info.plist in Resources */,
 				058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */,
-				74BA0B632A64AF9100E9E334 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,10 +289,12 @@
 				74B7EE352A745E4F00644CF6 /* SwiftKs.swift in Sources */,
 				74894E9F2A6DB5720015D452 /* OnboardingScreen.swift in Sources */,
 				74B7EE312A72F2E600644CF6 /* SignInScreen.swift in Sources */,
+				746A740D2A80425300985007 /* SignInService.swift in Sources */,
 				74B7EE262A6F303400644CF6 /* ProductList.swift in Sources */,
 				74BA0B7F2A675C7500E9E334 /* MokoUtils.swift in Sources */,
 				7555FF83242A565900829871 /* HomeView.swift in Sources */,
 				74B7EE372A75A7CC00644CF6 /* Analytics.swift in Sources */,
+				746A740F2A80587600985007 /* FirebaseListener.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,16 +7,18 @@
 //
 
 import SwiftUI
+import FirebaseAuthUI
+import FirebaseGoogleAuthUI
 
-struct SignInScreen: View {
-    var body: some View {
-        Text("This is where the sign in screen goes.")
-            .font(.headline)
+struct SignInScreen: UIViewControllerRepresentable {
+    var authUI: FUIAuth
+    
+    func makeUIViewController(context: Context) -> UINavigationController {
+        let authViewController = authUI.authViewController()
+        return authViewController
     }
-}
-
-struct SignInScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        SignInScreen()
+    
+    func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {
+        
     }
 }

@@ -6,17 +6,14 @@ import mokoMvvmFlowSwiftUI
 struct HomeView: View {
     @StateObject var homeViewModel: HomeViewModel = GetViewModels().getHomeViewModel()
     @EnvironmentObject var router: Router
-    
-    init() {
-        // temp, just to reset it each time
-        homeViewModel.clearDatastore()
-    }
+    @EnvironmentObject var signInService: SignInService
     
     var body: some View {
         NavigationStack(path: $router.path) {
             let homeUiState = homeViewModel.stateKs
             
             VStack {
+                //Image(resource: \.flower)
                 if !homeUiState.isOnboardingComplete {
                     OnboardingScreenView(
                         analytics: AppAnalyticsService(),
@@ -24,8 +21,7 @@ struct HomeView: View {
                         onScreenChanged: homeViewModel.onOnboardingScreenUpdated
                     )}
                 else{
-                    ProductList(productStateK: homeUiState.products.resultKs)
-                }
+                    ProductList(productStateK: homeUiState.products.resultKs)                }
             }
             .navigationDestination(for: AppDeepLink.self) { deepLink in
                 chooseDestination(for: deepLink)
@@ -37,10 +33,12 @@ struct HomeView: View {
 @ViewBuilder
 func chooseDestination(for goToPath: AppDeepLink) -> some View {
     
-        switch goToPath {
-        case .signin: SignInScreen()
-        default: EmptyView()
-        }
+    EmptyView()
+    
+//        switch goToPath {
+//        case .signin: SignInScreen()
+//        default: EmptyView()
+//        }
 }
 
 extension HomeViewModel {

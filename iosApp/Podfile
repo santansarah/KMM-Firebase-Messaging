@@ -4,8 +4,10 @@ target 'iosApp' do
   pod 'shared', :path => '../shared'
   pod 'sharedSwift', :path => '../shared'
   pod 'mokoMvvmFlowSwiftUI', :podspec => 'https://raw.githubusercontent.com/icerockdev/moko-mvvm/release/0.16.1/mokoMvvmFlowSwiftUI.podspec'
-  pod 'FirebaseAnalyticsSwift'
-  pod 'FirebaseInAppMessagingSwift', '> 10.12-beta'
+  #pod 'FirebaseFirestore'
+  #pod 'FirebaseUI/Auth'
+  #pod 'FirebaseUI/Google'
+  #pod 'FirebaseUI/OAuth' # Used for Sign in with Apple, Twitter, etc
 end
 
 

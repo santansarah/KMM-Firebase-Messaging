@@ -1,13 +1,11 @@
 package com.santansarah.kmmfirebasemessaging.data.local
 
 import co.touchlab.kermit.Logger
-import dev.gitlive.firebase.Firebase
-import dev.gitlive.firebase.firestore.firestore
-import org.koin.core.component.KoinComponent
+import dev.gitlive.firebase.firestore.FirebaseFirestore
 
-class UserRepository {
-
-    private val db = Firebase.firestore
+class UserRepository(
+    private val db: FirebaseFirestore
+) {
 
     suspend fun upsertUser(uid: String, token: String) {
 
