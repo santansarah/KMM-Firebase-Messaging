@@ -1,5 +1,6 @@
 package com.santansarah.kmmfirebasemessaging.di
 
+import com.santansarah.kmmfirebasemessaging.data.local.UserRepository
 import com.santansarah.kmmfirebasemessaging.presentation.home.HomeViewModel
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.get
@@ -11,7 +12,8 @@ actual fun getViewModelByPlatform() = module {
     }
 }
 
-object GetViewModels: KoinComponent {
+object KoinHelper: KoinComponent {
     fun getHomeViewModel() = get<HomeViewModel>()
+    fun getUserRepo() = get<UserRepository>()
 }
 

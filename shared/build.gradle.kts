@@ -80,6 +80,7 @@ kotlin {
                 // cocopods framework. BUT, then MOKO breaks, because MOKO MVVM
                 // needs to use a dynamic framework.
                 implementation("dev.gitlive:firebase-firestore:1.8.0")
+                implementation("dev.gitlive:firebase-auth:1.8.0")
 
             }
         }

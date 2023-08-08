@@ -8,30 +8,38 @@
 
 import SwiftUI
 import MultiPlatformLibrary
+import mokoMvvmFlowSwiftUI
 
 struct ProductList: View {
     var productStateK: ServiceResultKs<AnyObject>
     @EnvironmentObject var signInService: SignInService
+    @EnvironmentObject var router: Router
     
-    @State var requestSignIn = false
-    
-    var body: some View {
+    //let userRepo = KoinHelper().getUserRepo()
         
-        if requestSignIn == false {
-            
+    var body: some View {
+        NavigationStack(path: $router.path) {
             VStack {
                 Image(resource: \.logo)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .padding(.all)
                 
-                
-                Button {
-                    requestSignIn = !requestSignIn
-                } label: {
-                    Text(resource: SharedRes.strings().new_sign_in_heading)
-                        .foregroundColor(Color(resource: \.darkText))
-                    
+                if !signInService.isSignedIn.boolValue {
+                    Button {
+                        router.path.append(AppDeepLink.signin)
+                    } label: {
+                        Text(resource: SharedRes.strings().new_sign_in_heading)
+                            .foregroundColor(Color(resource: \.darkText))
+                    }
+                    .background(Color(resource: \.primary))
+                } else {
+                    Button("Sign Out") {
+                        do { try signInService.signOut() }
+                        catch {
+                            print(error)
+                        }
+                    }
                 }
                 
                 Spacer()
@@ -60,12 +68,18 @@ struct ProductList: View {
                 
             }
             .background(Color(resource: \.background))
-        } else {
-            SignInScreen(authUI: signInService.authUI!)
+            .navigationDestination(for: AppDeepLink.self) { deepLink in
+                switch deepLink {
+                case .signin: SignInScreen(authUI: signInService.authUI!)
+                default: EmptyView()
+                }
+            }
         }
+//        .onReceive(createPublisher(userRepo.isUserSignedIn) { result in
+//            print("signinservice: " + result.boolValue.description)
+//        })
     }
 }
-
 
 struct ProductList_Previews: PreviewProvider {
     static var previews: some View {

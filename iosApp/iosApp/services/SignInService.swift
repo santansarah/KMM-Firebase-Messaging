@@ -2,13 +2,22 @@ import Foundation
 
 import FirebaseAuthUI
 import FirebaseGoogleAuthUI
+import MultiPlatformLibrary
+import mokoMvvmFlowSwiftUI
+import Combine
 
 class SignInService: NSObject, ObservableObject, FUIAuthDelegate {
     let authUI: FUIAuth? = FUIAuth.defaultAuthUI()
+    let userRepo = KoinHelper().getUserRepo()
+        
+    @Published var isSignedIn: KotlinBoolean = false
+    
+    private var isSignedInCancellable: AnyCancellable?
 
+    
     override init() {
         super.init()
-
+        
         authUI?.delegate = self
         
         let providers: [FUIAuthProvider] = [
@@ -16,6 +25,15 @@ class SignInService: NSObject, ObservableObject, FUIAuthDelegate {
         ]
         
         authUI?.providers = providers
+        
+        isSignedInCancellable = createPublisher(userRepo.isUserSignedIn)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completion in
+                debugPrint(completion)
+            }, receiveValue: { [weak self] value in
+                self?.isSignedIn = value
+                print("signinservice: " + value.boolValue.description)
+            })
     }
 
     
@@ -40,3 +58,4 @@ class SignInService: NSObject, ObservableObject, FUIAuthDelegate {
         try authUI?.signOut()
     }
 }
+
