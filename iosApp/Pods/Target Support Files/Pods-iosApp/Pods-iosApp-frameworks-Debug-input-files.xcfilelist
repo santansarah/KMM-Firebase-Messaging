@@ -12,8 +12,11 @@ ${BUILT_PRODUCTS_DIR}/FirebaseGoogleAuthUI/FirebaseGoogleAuthUI.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseInAppMessaging/FirebaseInAppMessaging.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseInAppMessagingSwift/FirebaseInAppMessagingSwift.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework
+${BUILT_PRODUCTS_DIR}/FirebaseMessaging/FirebaseMessaging.framework
+${BUILT_PRODUCTS_DIR}/FirebaseOAuthUI/FirebaseOAuthUI.framework
 ${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework
 ${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework
+${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework
 ${BUILT_PRODUCTS_DIR}/GoogleSignIn/GoogleSignIn.framework
 ${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework
 ${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework

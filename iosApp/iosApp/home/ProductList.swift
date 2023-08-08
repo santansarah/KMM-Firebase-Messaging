@@ -14,6 +14,7 @@ struct ProductList: View {
     var productStateK: ServiceResultKs<AnyObject>
     @EnvironmentObject var signInService: SignInService
     @StateObject var router = Router.shared
+    @State var showSignInButton = true
     
     var body: some View {
         NavigationStack(path: $router.path) {
@@ -23,7 +24,7 @@ struct ProductList: View {
                     .aspectRatio(contentMode: .fit)
                     .padding(.all)
                 
-                if !signInService.isSignedIn.boolValue {
+                if showSignInButton {
                     Button {
                         router.path.append(AppDeepLink.signin)
                     } label: {
@@ -45,6 +46,7 @@ struct ProductList: View {
                 switch(productStateK) {
                 case .loading:
                     ProgressView()
+                    Spacer()
                 case .empty:
                     Text("No products")
                 case .error(let resultError):
@@ -56,9 +58,29 @@ struct ProductList: View {
                         resultSuccess.data as! [Product],
                         id: \.self.id
                     ) { product in
-                        Text(product.title)
-                            .listRowBackground(Color(resource: \.cardSurface))      .padding()
-                            .foregroundColor(Color(resource: \.darkText))
+                        HStack {
+                            AsyncImage(url: URL(string: product.image)) { phase in
+                                switch phase {
+                                case .empty:
+                                    ProgressView()
+                                        .frame(maxWidth: 100, maxHeight: 100)
+                                case .success(let thisImage):
+                                    thisImage.resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(maxWidth: 100, maxHeight: 100)
+                                case .failure:
+                                    Image(systemName: "photo")
+                                        .frame(maxWidth: 100, maxHeight: 100)
+                                @unknown default:
+                                    EmptyView()
+                                }
+                            }
+                            .padding(.all, 4)
+                            Text(product.title)
+                                .listRowBackground(Color(resource: \.cardSurface))
+                                .padding(.all, 4)
+                                .foregroundColor(Color(resource: \.darkText))
+                        }
                     }
                     .background(Color(resource: \.background))
                     .scrollContentBackground(.hidden)
@@ -73,9 +95,12 @@ struct ProductList: View {
                 }
             }
         }
-//        .onReceive(createPublisher(userRepo.isUserSignedIn) { result in
-//            print("signinservice: " + result.boolValue.description)
-//        })
+        .onReceive(signInService.getPublisher()) { isUserSignedIn in
+            withAnimation {
+                showSignInButton = !isUserSignedIn.boolValue
+            }
+        }
+        
     }
 }
 

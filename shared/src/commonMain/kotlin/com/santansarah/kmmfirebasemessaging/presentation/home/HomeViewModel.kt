@@ -16,7 +16,8 @@ import org.koin.core.component.KoinComponent
 data class HomeUIState(
     val isOnboardingComplete: Boolean = false,
     val currentOnboardingScreen: Int = 0,
-    val products: ServiceResult = ServiceResult.Empty
+    val products: ServiceResult = ServiceResult.Empty,
+    val selectedProduct: ServiceResult = ServiceResult.Empty
 )
 
 class HomeViewModel(

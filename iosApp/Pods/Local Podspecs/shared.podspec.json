@@ -23,10 +23,13 @@
     "FirebaseInAppMessagingSwift": [
       "> 10.12-beta"
     ],
-    "FirebaseUI/Auth": [
+    "FirebaseMessaging": [
 
     ],
     "FirebaseUI/Google": [
+
+    ],
+    "FirebaseUI/OAuth": [
 
     ]
   },

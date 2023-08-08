@@ -709,10 +709,22 @@ PODS:
     - GoogleUtilities/Environment (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - PromisesObjC (~> 2.1)
-  - FirebaseUI/Auth (13.0.0):
-    - FirebaseAuthUI (~> 13.0)
+  - FirebaseMessaging (10.13.0):
+    - FirebaseCore (~> 10.0)
+    - FirebaseInstallations (~> 10.0)
+    - GoogleDataTransport (~> 9.2)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.8)
+    - GoogleUtilities/Environment (~> 7.8)
+    - GoogleUtilities/Reachability (~> 7.8)
+    - GoogleUtilities/UserDefaults (~> 7.8)
+    - nanopb (< 2.30910.0, >= 2.30908.0)
+  - FirebaseOAuthUI (13.0.0):
+    - FirebaseAuth (< 11.0, >= 8.0)
+    - FirebaseAuthUI (< 14.0, >= 12.0.2)
   - FirebaseUI/Google (13.0.0):
     - FirebaseGoogleAuthUI (~> 13.0)
+  - FirebaseUI/OAuth (13.0.0):
+    - FirebaseOAuthUI (~> 13.0)
   - GoogleAppMeasurement (10.12.0):
     - GoogleAppMeasurement/AdIdSupport (= 10.12.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.11)
@@ -733,6 +745,10 @@ PODS:
     - GoogleUtilities/Network (~> 7.11)
     - "GoogleUtilities/NSData+zlib (~> 7.11)"
     - nanopb (< 2.30910.0, >= 2.30908.0)
+  - GoogleDataTransport (9.2.3):
+    - GoogleUtilities/Environment (~> 7.7)
+    - nanopb (< 2.30910.0, >= 2.30908.0)
+    - PromisesObjC (< 3.0, >= 1.2)
   - GoogleSignIn (6.2.4):
     - AppAuth (~> 1.5)
     - GTMAppAuth (~> 1.3)
@@ -833,8 +849,9 @@ PODS:
     - FirebaseAnalyticsSwift
     - FirebaseFirestore
     - FirebaseInAppMessagingSwift (> 10.12-beta)
-    - FirebaseUI/Auth
+    - FirebaseMessaging
     - FirebaseUI/Google
+    - FirebaseUI/OAuth
   - sharedSwift (1.0):
     - shared
 
@@ -861,8 +878,11 @@ SPEC REPOS:
     - FirebaseInAppMessaging
     - FirebaseInAppMessagingSwift
     - FirebaseInstallations
+    - FirebaseMessaging
+    - FirebaseOAuthUI
     - FirebaseUI
     - GoogleAppMeasurement
+    - GoogleDataTransport
     - GoogleSignIn
     - GoogleUtilities
     - "gRPC-C++"
@@ -898,8 +918,11 @@ SPEC CHECKSUMS:
   FirebaseInAppMessaging: dc24f50aebaf81a377f0b8abf360778f94208931
   FirebaseInAppMessagingSwift: 11e93d28ae6b37572f1f190e79caae5ecb6fa286
   FirebaseInstallations: 7b99ef103f013624444c614397038219c45f8e63
+  FirebaseMessaging: c2b782a6af3058b6e53ac2a6eaab84c5786200c8
+  FirebaseOAuthUI: 367cc8ce062fefbe6b362801f966da98d056f2d7
   FirebaseUI: 2453fbe76553b738ae3642eb12bf2891c12485ea
   GoogleAppMeasurement: 2d800fab85e7848b1e66a6f8ce5bca06c5aad892
+  GoogleDataTransport: f0308f5905a745f94fb91fea9c6cbaf3831cb1bd
   GoogleSignIn: 5651ce3a61e56ca864160e79b484cd9ed3f49b7a
   GoogleUtilities: c63691989bf362ba0505507da00eeb326192e83e
   "gRPC-C++": 0968bace703459fd3e5dcb0b2bed4c573dbff046
@@ -910,7 +933,7 @@ SPEC CHECKSUMS:
   mokoMvvmFlowSwiftUI: e2ecbc38ea996fc376bf297041aeaad06ac44c89
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
-  shared: c35f968bd5de593f4f7f4044436f0bdbdbe0602c
+  shared: fd91c2ef4dea563182b3b1795edea837d4376fa3
   sharedSwift: 0ae7cb36e20289846c00bb7343d1f9915b0882ab
 
 PODFILE CHECKSUM: 7d22b1c3e50211aeccba20473e4cbcaf2a39b01d

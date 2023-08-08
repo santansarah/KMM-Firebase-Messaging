@@ -1,11 +1,11 @@
 import Foundation
 import FirebaseAuthUI
 import FirebaseGoogleAuthUI
+import FirebaseOAuthUI
 import MultiPlatformLibrary
 import mokoMvvmFlowSwiftUI
 import Combine
 
-@MainActor
 class SignInService: NSObject, ObservableObject, FUIAuthDelegate {
     let authUI: FUIAuth? = FUIAuth.defaultAuthUI()
     let userRepo = KoinHelper().getUserRepo()
@@ -21,11 +21,14 @@ class SignInService: NSObject, ObservableObject, FUIAuthDelegate {
         authUI?.shouldHideCancelButton = true
         
         let providers: [FUIAuthProvider] = [
-            FUIGoogleAuth(authUI: authUI!)
+            FUIGoogleAuth(authUI: authUI!),
+            FUIOAuth.appleAuthProvider()
         ]
         
         authUI?.providers = providers
         
+        // decided to not use this, but it's good code to have for future
+        // reference.
         isSignedInCancellable = createPublisher(userRepo.isUserSignedIn)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
@@ -36,6 +39,9 @@ class SignInService: NSObject, ObservableObject, FUIAuthDelegate {
             })
     }
     
+    func getPublisher() -> AnyPublisher<KotlinBoolean, Never> {
+        return createPublisher(userRepo.isUserSignedIn)
+    }
     
     func authUI(_ authUI: FUIAuth, didSignInWith user: User?, error: Error?) {
         print("user: \(user?.email ?? "none")")
@@ -58,6 +64,7 @@ class SignInService: NSObject, ObservableObject, FUIAuthDelegate {
                 catch {
                     print("exception")
                 }
+
             }
             
             Router.shared.goBack()

@@ -45,8 +45,9 @@ kotlin {
         // From the KMM docs: this parameter instructs the CocoaPods plugin to use Pod dependencies
         // with dynamic frameworks without generating cinterop bindings.
         pod("FirebaseFirestore", linkOnly = true)
-        pod("FirebaseUI/Auth")
         pod("FirebaseUI/Google")
+        pod("FirebaseUI/OAuth")
+        pod("FirebaseMessaging")
     }
 
     sourceSets {

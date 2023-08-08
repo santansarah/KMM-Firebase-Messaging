@@ -1,6 +1,7 @@
 package com.santansarah.kmmfirebasemessaging.android
 
 import android.app.Application
+import coil.ImageLoader
 import com.santansarah.kmmfirebasemessaging.android.di.androidAppModule
 import com.santansarah.kmmfirebasemessaging.di.initKoin
 import org.koin.android.ext.koin.androidContext
@@ -13,6 +14,8 @@ class SanTanShop: Application() {
             androidContext(this@SanTanShop)
             modules(androidAppModule)
         }
+
     }
+
 }
 

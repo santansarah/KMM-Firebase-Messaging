@@ -5,14 +5,7 @@ import dev.gitlive.firebase.auth.FirebaseAuth
 import dev.gitlive.firebase.firestore.FirebaseFirestore
 import dev.icerock.moko.mvvm.flow.cFlow
 import dev.icerock.moko.mvvm.viewmodel.ViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.stateIn
 
 class UserRepository(
     private val db: FirebaseFirestore,
