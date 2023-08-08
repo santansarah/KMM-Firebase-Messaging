@@ -6,7 +6,6 @@ import MultiPlatformLibrary
 @main
 struct iOSApp: App {
     
-    @StateObject var router = Router()
     let signInService: SignInService?
     
     init() {
@@ -18,7 +17,6 @@ struct iOSApp: App {
 	var body: some Scene {
 		WindowGroup {
 			HomeView()
-                .environmentObject(router)
                 .environmentObject(signInService!)
                 .onOpenURL { url in
                     
@@ -29,7 +27,7 @@ struct iOSApp: App {
                     
                     let linkScreen = AppDeepLink.utils().typeFromPath(fullDeepLink: url.absoluteString)
                     print("screen: " + linkScreen.name)
-                    router.path.append(linkScreen)
+                    Router.shared.path.append(linkScreen)
                     
                 }
         }

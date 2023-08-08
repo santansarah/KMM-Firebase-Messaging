@@ -9,9 +9,16 @@
 import SwiftUI
 
 class Router: ObservableObject {
+    
+    static let shared = Router()
+    
     @Published var path = NavigationPath()
     
     func reset() {
         path = NavigationPath()
+    }
+    
+    func goBack() {
+        path.removeLast()
     }
 }

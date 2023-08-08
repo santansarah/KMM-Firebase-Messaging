@@ -11,7 +11,6 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		746A740D2A80425300985007 /* SignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746A740C2A80425300985007 /* SignInService.swift */; };
-		746A740F2A80587600985007 /* FirebaseListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 746A740E2A80587600985007 /* FirebaseListener.swift */; };
 		74894E9F2A6DB5720015D452 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74894E9E2A6DB5710015D452 /* OnboardingScreen.swift */; };
 		749FEC122A7DB063006B6578 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 749FEC112A7DB062006B6578 /* GoogleService-Info.plist */; };
 		74B7EE262A6F303400644CF6 /* ProductList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B7EE252A6F303400644CF6 /* ProductList.swift */; };
@@ -35,7 +34,6 @@
 		746A73FA2A7F101800985007 /* gRPCCertificates-Cpp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = "gRPCCertificates-Cpp.bundle"; sourceTree = "<group>"; };
 		746A74022A7F121F00985007 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		746A740C2A80425300985007 /* SignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInService.swift; sourceTree = "<group>"; };
-		746A740E2A80587600985007 /* FirebaseListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseListener.swift; sourceTree = "<group>"; };
 		74894E9E2A6DB5710015D452 /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
 		749FEC112A7DB062006B6578 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		74B7EE252A6F303400644CF6 /* ProductList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductList.swift; sourceTree = "<group>"; };
@@ -112,7 +110,6 @@
 			children = (
 				74B7EE362A75A7CC00644CF6 /* Analytics.swift */,
 				746A740C2A80425300985007 /* SignInService.swift */,
-				746A740E2A80587600985007 /* FirebaseListener.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -294,7 +291,6 @@
 				74BA0B7F2A675C7500E9E334 /* MokoUtils.swift in Sources */,
 				7555FF83242A565900829871 /* HomeView.swift in Sources */,
 				74B7EE372A75A7CC00644CF6 /* Analytics.swift in Sources */,
-				746A740F2A80587600985007 /* FirebaseListener.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

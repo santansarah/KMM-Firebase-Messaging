@@ -40,4 +40,12 @@ class UserRepository(
 
     }
 
+    suspend fun signOut() {
+        try {
+            firebaseAuth.signOut()
+        } catch (e: Exception) {
+            Logger.d { e.message.toString() }
+        }
+    }
+
 }

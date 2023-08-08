@@ -13,10 +13,8 @@ import mokoMvvmFlowSwiftUI
 struct ProductList: View {
     var productStateK: ServiceResultKs<AnyObject>
     @EnvironmentObject var signInService: SignInService
-    @EnvironmentObject var router: Router
+    @StateObject var router = Router.shared
     
-    //let userRepo = KoinHelper().getUserRepo()
-        
     var body: some View {
         NavigationStack(path: $router.path) {
             VStack {
@@ -30,15 +28,15 @@ struct ProductList: View {
                         router.path.append(AppDeepLink.signin)
                     } label: {
                         Text(resource: SharedRes.strings().new_sign_in_heading)
-                            .foregroundColor(Color(resource: \.darkText))
+                            .padding()
+                            .foregroundColor(Color(resource: \.lightText))
+                            .frame(maxWidth: .infinity)
+                            .background(Color(resource: \.primary))
                     }
-                    .background(Color(resource: \.primary))
+                    .buttonStyle(.borderless)
                 } else {
                     Button("Sign Out") {
-                        do { try signInService.signOut() }
-                        catch {
-                            print(error)
-                        }
+                        signInService.signOut()
                     }
                 }
                 
@@ -89,5 +87,6 @@ struct ProductList_Previews: PreviewProvider {
         
         ProductList(productStateK: products.resultKs)
             .environmentObject(SignInService())
+            .environmentObject(Router())
     }
 }
