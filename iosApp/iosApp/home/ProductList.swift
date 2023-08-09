@@ -63,14 +63,14 @@ struct ProductList: View {
                                 switch phase {
                                 case .empty:
                                     ProgressView()
-                                        .frame(maxWidth: 100, maxHeight: 100)
+                                        .frame(width: 100, height: 100)
                                 case .success(let thisImage):
                                     thisImage.resizable()
                                         .aspectRatio(contentMode: .fit)
-                                        .frame(maxWidth: 100, maxHeight: 100)
+                                        .frame(width: 100, height: 100)
                                 case .failure:
                                     Image(systemName: "photo")
-                                        .frame(maxWidth: 100, maxHeight: 100)
+                                        .frame(width: 100, height: 100)
                                 @unknown default:
                                     EmptyView()
                                 }

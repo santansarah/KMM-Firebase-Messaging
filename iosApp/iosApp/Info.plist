@@ -24,20 +24,20 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
-			<key>CFBundleURLName</key>
-			<string>santansarah.kmmfirebase</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.googleusercontent.apps.11944393330-gptth28o09s9vtbftjhg7utpgocll9v7</string>
-			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>santansarah.kmmfirebaseui</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.11944393330-e1pvkarti8hp628eoa9g7gd6hsn7mgq5</string>
+			</array>
 		</dict>
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>santansarah.kmmfirebase</string>
+			<string>santansarah.kmmfirebaseui</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>kmm</string>

@@ -15,10 +15,17 @@ struct SignInScreen: UIViewControllerRepresentable {
     
     func makeUIViewController(context: Context) -> UINavigationController {
         let authViewController = authUI.authViewController()
+        
+//        let authViewController = FUICustomAuthPickerViewController(nibName: "CustomFirebaseUI",
+//                                                                   bundle: Bundle.main,
+//                                                                   authUI: authUI)
+
+        
         return authViewController
     }
     
     func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {
         
     }
+    
 }

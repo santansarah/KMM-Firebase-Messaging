@@ -82,4 +82,11 @@ class SignInService: NSObject, ObservableObject, FUIAuthDelegate {
             }
         }
     }
+    
+    func authPickerViewController(forAuthUI authUI: FUIAuth) -> FUIAuthPickerViewController {
+      return FUICustomAuthPickerViewController(nibName: "CustomFirebaseUI",
+                                               bundle: Bundle.main,
+                                               authUI: authUI)
+    }
+
 }
