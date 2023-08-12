@@ -20,7 +20,7 @@ val androidAppModule = module {
     single { AuthUI.getInstance() }
     single { SignInService(get(), get(), get(), get()) }
     single { (mainActivityContext: Context) ->
-        SignInObserver(mainActivityContext, get())
+        SignInObserver(mainActivityContext, get(), get())
     }
 
 }

@@ -9,7 +9,7 @@ import Combine
 class SignInService: NSObject, ObservableObject, FUIAuthDelegate {
     let authUI: FUIAuth? = FUIAuth.defaultAuthUI()
     let userRepo = KoinHelper().getUserRepo()
-        
+    
     @Published var isSignedIn: KotlinBoolean = false
     
     private var isSignedInCancellable: AnyCancellable?
@@ -64,7 +64,7 @@ class SignInService: NSObject, ObservableObject, FUIAuthDelegate {
                 catch {
                     print("exception")
                 }
-
+                
             }
             
             Router.shared.goBack()
@@ -84,9 +84,9 @@ class SignInService: NSObject, ObservableObject, FUIAuthDelegate {
     }
     
     func authPickerViewController(forAuthUI authUI: FUIAuth) -> FUIAuthPickerViewController {
-      return FUICustomAuthPickerViewController(nibName: "CustomFirebaseUI",
-                                               bundle: Bundle.main,
-                                               authUI: authUI)
+        return FUICustomAuthPickerViewController(nibName: "CustomFirebaseUI",
+                                                 bundle: Bundle.main,
+                                                 authUI: authUI)
     }
-
+    
 }

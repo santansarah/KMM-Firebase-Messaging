@@ -7,10 +7,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.result.ActivityResultLauncher
 import androidx.compose.runtime.MutableState
 import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.coroutineScope
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.santansarah.kmmfirebasemessaging.android.services.SignInService
+import com.santansarah.kmmfirebasemessaging.data.local.UserRepository
 import com.santansarah.kmmfirebasemessaging.utils.SignUpHelper
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -20,7 +24,8 @@ import javax.inject.Inject
 
 class SignInObserver @Inject constructor(
     private val activity: Context,
-    private val signInService: SignInService
+    private val signInService: SignInService,
+    private val userRepository: UserRepository
 ) : DefaultLifecycleObserver {
 
     private lateinit var getAuthResults: ActivityResultLauncher<Intent>
@@ -31,11 +36,12 @@ class SignInObserver @Inject constructor(
     override fun onCreate(owner: LifecycleOwner) {
         val registry = (activity as ComponentActivity).activityResultRegistry
 
-        owner.lifecycle.coroutineScope.launch {
-            signInService
-                .isUserSignedIn(this).collect {
+        owner.lifecycleScope.launch {
+            owner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                userRepository.isUserSignedIn.collect {
                     _isUserSignedIn.value = it
                 }
+            }
         }
 
         getAuthResults = registry.register(
