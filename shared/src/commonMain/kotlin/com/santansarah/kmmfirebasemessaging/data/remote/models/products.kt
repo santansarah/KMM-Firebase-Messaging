@@ -1,7 +1,6 @@
 package com.santansarah.kmmfirebasemessaging.data.remote.models
 
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonNull
 
 val products = Json {ignoreUnknownKeys = true}
     .decodeFromString<List<Product>>("""

@@ -5,7 +5,6 @@ import android.content.Intent
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.result.ActivityResultLauncher
-import androidx.compose.runtime.MutableState
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
@@ -18,7 +17,6 @@ import com.santansarah.kmmfirebasemessaging.data.local.UserRepository
 import com.santansarah.kmmfirebasemessaging.utils.SignUpHelper
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

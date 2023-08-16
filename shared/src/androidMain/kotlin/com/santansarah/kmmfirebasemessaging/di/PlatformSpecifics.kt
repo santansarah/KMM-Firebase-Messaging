@@ -3,12 +3,12 @@ package com.santansarah.kmmfirebasemessaging.di
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 
-internal class AndroidDispatcher : Dispatcher {
+class AndroidDispatcher : Dispatcher {
     override val io: CoroutineDispatcher
         get() = Dispatchers.IO
 }
 
-internal actual fun provideDispatcher(): Dispatcher = AndroidDispatcher()
+actual fun provideDispatcher(): Dispatcher = AndroidDispatcher()
 
 
 

@@ -34,3 +34,13 @@ https://github.com/GitLiveApp/firebase-kotlin-sdk
 
 <a href="https://www.youtube.com/watch?v=_Z-iU_9xVd0" target="_blank"><img src="https://img.youtube.com/vi/_Z-iU_9xVd0/0.jpg"></a>
 
+# Part 5: Easily Sign in with Google, Sign in with Apple using FirebaseUI Authentication for KMM SwiftUI Apps
+
+This next KMM video includes adding FirebaseUI to the iOS SwiftUI app. I'll go over the shared
+Firestore module, FUIAuthDelegate, using Kotlin Coroutines in SwiftUI, Swift Subscribers &
+Publishers, custom AuthPickerViewController, and setting up Firebase for Sign in with Google and
+Sign in with Apple.
+
+<a href="https://www.youtube.com/watch?v=vuXbS_wgyoY" target="_blank"><img src="https://img.youtube.com/vi/vuXbS_wgyoY/0.jpg"></a>
+
+#swiftuitutorial #swiftuifirebase, #firebaseauth #signinwithapple

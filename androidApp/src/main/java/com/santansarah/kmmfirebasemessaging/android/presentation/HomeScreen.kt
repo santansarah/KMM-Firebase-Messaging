@@ -4,6 +4,7 @@ import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -40,8 +41,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import com.santansarah.kmmfirebasemessaging.SharedRes
 import com.santansarah.kmmfirebasemessaging.android.services.AppAnalyticsService
-import com.santansarah.kmmfirebasemessaging.android.utils.ThemeColors
-import com.santansarah.kmmfirebasemessaging.android.utils.toColor
 import com.santansarah.kmmfirebasemessaging.data.remote.models.products
 import com.santansarah.kmmfirebasemessaging.presentation.home.HomeUIState
 import com.santansarah.kmmfirebasemessaging.presentation.home.HomeViewModel
@@ -54,7 +53,8 @@ fun HomeScreen(
     viewModel: HomeViewModel = getViewModel(),
     onSignIn: () -> Unit,
     onSignOut: () -> Unit,
-    isUserSignedIn: Boolean
+    isUserSignedIn: Boolean,
+    onDetailClicked: (Int) -> Unit
 ) {
 
     val analyticsService = get<AppAnalyticsService>()
@@ -64,7 +64,7 @@ fun HomeScreen(
         homeState.value,
         analyticsService::completeTutorial,
         viewModel::onOnboardingScreenUpdated,
-        onSignIn, onSignOut, isUserSignedIn
+        onSignIn, onSignOut, isUserSignedIn, onDetailClicked
     )
 
 }
@@ -76,7 +76,8 @@ fun HomeScreenLayout(
     onOnboardingScreenUpdated: (Int) -> Unit,
     onSignIn: () -> Unit,
     onSignOut: () -> Unit,
-    isUserSignedIn: Boolean
+    isUserSignedIn: Boolean,
+    onDetailClicked: (Int) -> Unit
 ) {
 
     if (homeUIState.currentOnboardingScreen > 0) {
@@ -151,6 +152,9 @@ fun HomeScreenLayout(
                                     start = 10.dp, end = 6.dp,
                                     top = 14.dp, bottom = 14.dp
                                 )
+                                .clickable {
+                                    onDetailClicked(product.id)
+                                }
                         ) {
                             AsyncImage(
                                 modifier = Modifier.size(100.dp)
@@ -201,6 +205,6 @@ fun HomeScreenPreview() {
         products = ServiceResult.Success(products)
     )
 
-    HomeScreenLayout(homeUIState, {}, {}, {}, {}, false)
+    HomeScreenLayout(homeUIState, {}, {}, {}, {}, false, {})
 
 }

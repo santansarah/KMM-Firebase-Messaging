@@ -55,7 +55,7 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation(libs.ktor.client.android)
-                implementation(libs.koin.compose)
+                implementation(libs.koin.androidx.compose)
                 implementation(libs.koin.android)
             }
         }

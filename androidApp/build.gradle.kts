@@ -56,6 +56,7 @@ dependencies {
 
     implementation(libs.navigationCompose)
     implementation(libs.koin.compose)
+    implementation(libs.koin.androidx.compose)
     implementation(libs.lifecycle.compose)
 
     implementation(platform("com.google.firebase:firebase-bom:32.2.0"))
