@@ -1,6 +1,9 @@
 package com.santansarah.kmmfirebasemessaging.android.presentation.detail
 
 import android.util.Log
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.LocalActivityResultRegistryOwner
+import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -16,36 +19,62 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
-import com.google.firebase.messaging.FirebaseMessaging
+import com.santansarah.kmmfirebasemessaging.android.domain.models.CurrentPermissionState
+import com.santansarah.kmmfirebasemessaging.android.services.PermissionManager
 import com.santansarah.kmmfirebasemessaging.android.theme.AppTheme
 import com.santansarah.kmmfirebasemessaging.data.remote.models.Product
 import com.santansarah.kmmfirebasemessaging.data.remote.models.products
 import com.santansarah.kmmfirebasemessaging.presentation.details.DetailsViewModel
 import com.santansarah.kmmfirebasemessaging.utils.ServiceResult
-import kotlinx.coroutines.tasks.await
+import org.koin.compose.koinInject
 import java.util.UUID
 
 @Composable
 fun ProductDetailScreen(
-    viewModel: DetailsViewModel
+    viewModel: DetailsViewModel,
+    permissionManager: PermissionManager = koinInject()
 ) {
 
     val uiState = viewModel.detailsState.collectAsStateWithLifecycle()
 
+    Log.d("permissions", permissionManager.toString())
+
+    val activity = LocalContext.current as ComponentActivity
+    val activityResultRegistry = checkNotNull(LocalActivityResultRegistryOwner.current) {
+        "No ActivityResultRegistryOwner was provided via LocalActivityResultRegistryOwner"
+    }.activityResultRegistry
+
+    LaunchedEffect(Unit) {
+        permissionManager.registerLauncher(activityResultRegistry)
+        permissionManager.checkPermissions(activity)
+    }
+
+    val permissionState = permissionManager.permissionState.collectAsStateWithLifecycle()
+
     when (val currentProduct = uiState.value.selectedProduct) {
         is ServiceResult.Success<*> -> {
-            ProductDetailLayout(product = currentProduct.data as Product,
-                viewModel::insertOrUpdateOrder)
+            ProductDetailLayout(
+                product = currentProduct.data as Product,
+                viewModel::insertOrUpdateOrder,
+                permissionState.value,
+                permissionManager::launchPermissionRequest,
+            )
         }
+
         else -> {
             CircularProgressIndicator()
         }
@@ -56,12 +85,29 @@ fun ProductDetailScreen(
 @Composable
 fun ProductDetailLayout(
     product: Product,
-    onOrderPlaced: (String, Boolean) -> Unit
+    onOrderPlaced: (String, Boolean) -> Unit,
+    permissionState: CurrentPermissionState,
+    onPermissionsClicked: () -> Unit,
 ) {
-    var token: String
-    LaunchedEffect(key1 = true) {
-        token = FirebaseMessaging.getInstance().token.await()
-        Log.d("test", "token: $token")
+
+    var openBottomSheet by rememberSaveable { mutableStateOf(true) }
+
+    Log.d("permissions", permissionState.toString())
+
+    when (permissionState) {
+        is CurrentPermissionState.NeedsCheck,
+        CurrentPermissionState.ShowRational -> {
+            ShowPermissionsSheet(
+                openBottomSheet,
+                permissionState,
+                onPermissionsClicked,
+                { openBottomSheet = false },
+            )
+        }
+
+        else -> {
+            openBottomSheet = false
+        }
     }
 
     Column(
@@ -122,6 +168,8 @@ fun ProductDetailLayout(
 @Composable
 fun ProductDetailLayoutPreview() {
     AppTheme {
-        ProductDetailLayout(products.first()) { _,_ ->}
+        ProductDetailLayout(products.first(), { _, _ -> },
+            CurrentPermissionState.NeedsCheck,
+            {})
     }
 }

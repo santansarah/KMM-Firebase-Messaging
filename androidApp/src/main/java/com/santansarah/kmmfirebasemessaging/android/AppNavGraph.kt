@@ -1,6 +1,8 @@
 package com.santansarah.kmmfirebasemessaging.android
 
+import androidx.activity.ComponentActivity
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -11,9 +13,12 @@ import androidx.navigation.navDeepLink
 import com.santansarah.kmmfirebasemessaging.android.presentation.HomeScreen
 import com.santansarah.kmmfirebasemessaging.android.presentation.account.SignInScreen
 import com.santansarah.kmmfirebasemessaging.android.presentation.detail.ProductDetailScreen
+import com.santansarah.kmmfirebasemessaging.android.services.PermissionManager
 import com.santansarah.kmmfirebasemessaging.domain.AppDeepLink
 import com.santansarah.kmmfirebasemessaging.presentation.details.DetailsViewModel
 import org.koin.androidx.compose.getViewModel
+import org.koin.compose.koinInject
+import org.koin.core.context.GlobalContext.get
 import org.koin.core.parameter.parametersOf
 
 @Composable

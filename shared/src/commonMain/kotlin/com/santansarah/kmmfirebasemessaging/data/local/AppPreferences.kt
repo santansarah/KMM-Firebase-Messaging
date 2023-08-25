@@ -19,7 +19,8 @@ data class AppPreferences(
     val lastOnboardingScreen: Int = 0,
     val isOnboardingComplete: Boolean = false,
     val userId: Int = 0,
-    val isSignedOut: Boolean
+    val isSignedOut: Boolean,
+    val notificationsDenied: Boolean
 )
 
 class AppPreferencesRepository(
@@ -32,6 +33,7 @@ class AppPreferencesRepository(
         val LAST_ONBOARDING_SCREEN = intPreferencesKey("last_onboarding")
         val USER_ID = intPreferencesKey("userId")
         val IS_SIGNED_OUT = booleanPreferencesKey("isSignedOut")
+        val NOTIFICATIONS_DENIED = booleanPreferencesKey("notificationsDenied")
     }
 
     suspend fun clear() {
@@ -89,6 +91,12 @@ class AppPreferencesRepository(
         }
     }
 
+    suspend fun showNotifications(denied: Boolean) {
+        dataStore.edit {
+            it[PreferencesKeys.NOTIFICATIONS_DENIED] = denied
+        }
+    }
+
     /**
      * Get the preferences key, then map it to the data class.
      */
@@ -98,7 +106,8 @@ class AppPreferencesRepository(
         val isOnBoardingComplete: Boolean = (lastScreen >= 1)
         val userId = preferences[PreferencesKeys.USER_ID] ?: 0
         val isSignedOut = preferences[PreferencesKeys.IS_SIGNED_OUT] ?: false
+        val showNotifications = preferences[PreferencesKeys.NOTIFICATIONS_DENIED] ?: false
 
-        return AppPreferences(lastScreen, isOnBoardingComplete, userId, isSignedOut)
+        return AppPreferences(lastScreen, isOnBoardingComplete, userId, isSignedOut, showNotifications)
     }
 }

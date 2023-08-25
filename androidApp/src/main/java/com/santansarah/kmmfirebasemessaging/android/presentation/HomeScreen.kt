@@ -2,6 +2,8 @@ package com.santansarah.kmmfirebasemessaging.android.presentation
 
 import android.content.res.Configuration.UI_MODE_NIGHT_NO
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -45,8 +47,8 @@ import com.santansarah.kmmfirebasemessaging.data.remote.models.products
 import com.santansarah.kmmfirebasemessaging.presentation.home.HomeUIState
 import com.santansarah.kmmfirebasemessaging.presentation.home.HomeViewModel
 import com.santansarah.kmmfirebasemessaging.utils.ServiceResult
-import org.koin.androidx.compose.get
 import org.koin.androidx.compose.getViewModel
+import org.koin.compose.rememberKoinInject
 
 @Composable
 fun HomeScreen(
@@ -57,8 +59,13 @@ fun HomeScreen(
     onDetailClicked: (Int) -> Unit
 ) {
 
-    val analyticsService = get<AppAnalyticsService>()
+    val analyticsService: AppAnalyticsService = rememberKoinInject()
     val homeState = viewModel.homeUIState.collectAsStateWithLifecycle()
+
+    rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestMultiplePermissions()) {
+
+    }
 
     HomeScreenLayout(
         homeState.value,
@@ -157,7 +164,8 @@ fun HomeScreenLayout(
                                 }
                         ) {
                             AsyncImage(
-                                modifier = Modifier.size(100.dp)
+                                modifier = Modifier
+                                    .size(100.dp)
                                     .padding(4.dp),
                                 model = product.image,
                                 contentDescription = null,

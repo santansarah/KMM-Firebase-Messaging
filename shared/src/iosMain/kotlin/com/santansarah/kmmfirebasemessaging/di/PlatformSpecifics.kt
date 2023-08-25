@@ -5,7 +5,7 @@ import kotlinx.coroutines.Dispatchers
 
 internal class IosDispatcher: Dispatcher {
     override val io: CoroutineDispatcher
-        get() = Dispatchers.Default
+        get() = Dispatchers.Unconfined
 }
 
 internal actual fun provideDispatcher(): Dispatcher = IosDispatcher()
